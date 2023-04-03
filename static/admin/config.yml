@@ -4,8 +4,8 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: 'assets'
-public_folder: '/'
+media_folder: "assets"
+public_folder: "/"
 
 collections:
   - label: Service Links
@@ -13,15 +13,33 @@ collections:
     files:
       - label: Service Links
         name: service Links
-        file: 'home/footer.md'
+        file: "home/footer.md"
         fields:
-          - { label: Services Links, name: sitemapList, widget: list, fields: [ { label: Title, name: title, widget: string }, { label: Links Editor, name: sitemap, widget: list, fields: [ { label: Menu Label, name: title }, { label: Link, name: link } ] } ] }
+          - {
+              label: Services Links,
+              name: sitemapList,
+              widget: list,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  {
+                    label: Links Editor,
+                    name: sitemap,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Menu Label, name: title },
+                        { label: Link, name: link },
+                      ],
+                  },
+                ],
+            }
   - label: Home
     name: home
     files:
       - label: Banner
         name: homeBanner
-        file: 'home/banner.md'
+        file: "home/banner.md"
         fields:
           - { label: Title, name: title }
           - { label: Typed Words, name: typedWords, widget: list }
@@ -34,8 +52,8 @@ collections:
               - { label: Link, name: link }
       - label: Features
         name: features
-        file: 'home/features.md'
-        public_folder: '../assets/'
+        file: "home/features.md"
+        public_folder: "../assets/"
         fields:
           - { label: Title, name: title }
           - label: Features
@@ -47,8 +65,8 @@ collections:
               - { label: Image, name: image, widget: image }
       - label: Clients
         name: clients
-        file: 'home/clients.md'
-        public_folder: '../assets/'
+        file: "home/clients.md"
+        public_folder: "../assets/"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
@@ -61,8 +79,8 @@ collections:
               - { label: Image, name: image, widget: image }
       - label: Services
         name: homeServices
-        file: 'home/ourServices.md'
-        public_folder: '../assets/'
+        file: "home/ourServices.md"
+        public_folder: "../assets/"
         fields:
           - { label: Title, name: title }
           - label: Services
@@ -76,8 +94,8 @@ collections:
               - { label: Link, name: link }
       - label: Specialization
         name: specialization
-        file: 'home/specialization.md'
-        public_folder: '../assets/'
+        file: "home/specialization.md"
+        public_folder: "../assets/"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
@@ -92,7 +110,7 @@ collections:
               - { label: Theme Color, name: themeColor }
       - label: Testimonial
         name: testimonial
-        file: 'home/testimonial.md'
+        file: "home/testimonial.md"
         fields:
           - { label: Title, name: title }
           - label: Testimonials
@@ -105,7 +123,7 @@ collections:
               - { label: Theme Color, name: themeColor }
       - label: Process
         name: process
-        file: 'home/process.md'
+        file: "home/process.md"
         fields:
           - { label: Title, name: title }
           - label: Process
@@ -119,15 +137,15 @@ collections:
               - { label: Theme Color, name: themeColor }
       - label: SEO
         name: seoHome
-        file: 'home/seo.md'
+        file: "home/seo.md"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
           - { label: Keywords, name: keywords, widget: list }
       - label: Customers
         name: customers
-        file: 'home/customers.md'
-        public_folder: '../assets/'
+        file: "home/customers.md"
+        public_folder: "../assets/"
         fields:
           - { label: Title, name: title }
           - label: Customers
@@ -143,7 +161,7 @@ collections:
               - { label: Image, name: image, widget: image }
       - label: Contact
         name: contact
-        file: 'home/contact.md'
+        file: "home/contact.md"
         fields:
           - { label: Title, name: title }
           - { label: Call, name: call }
@@ -157,7 +175,7 @@ collections:
               - { label: Value, name: value }
       - label: Footer
         name: footer
-        file: 'home/footer.md'
+        file: "home/footer.md"
         fields:
           - { label: Title, name: title }
           - label: Sitemap List
@@ -176,7 +194,7 @@ collections:
                   - { label: Link, name: link }
       - label: Offers
         name: offers
-        file: 'home/offers.md'
+        file: "home/offers.md"
         fields:
           - { label: Title, name: title }
           - { label: offer, name: offer }
@@ -191,23 +209,23 @@ collections:
     files:
       - label: Banner
         name: banner
-        file: 'about/banner.md'
+        file: "about/banner.md"
         fields:
-          - {label: Title, name: title}
+          - { label: Title, name: title }
           - { name: body, label: Body, widget: markdown }
       - label: SEO
         name: seoAbout
-        file: 'about/seo.md'
+        file: "about/seo.md"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
           - { label: Keywords, name: keywords, widget: list }
       - label: Team
         name: team
-        file: 'about/team.md'
-        public_folder: '../assets/'
+        file: "about/team.md"
+        public_folder: "../assets/"
         fields:
-          - {label: Title, name: title}
+          - { label: Title, name: title }
           - label: Team Members
             name: teamMembers
             widget: list
@@ -222,13 +240,15 @@ collections:
     label: Services
     folder: services
     create: true
-    media_folder: ''
-    public_folder: ''
+    media_folder: ""
+    public_folder: ""
     nested:
       depth: 100
-      summary: '{{title}}'
+      summary: "{{title}}"
     fields:
       - { name: title, label: Title }
+      - { name: navTitle, label: Navagation Title }
+      - { name: position, label: Navagation Title Position }
       - { name: highlight, label: Highlight }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
@@ -327,7 +347,7 @@ collections:
         name: faq
         widget: object
         fields:
-          - {label: Title, name: title, required: false}
+          - { label: Title, name: title, required: false }
           - label: Questions
             name: questions
             required: false
@@ -345,28 +365,28 @@ collections:
           - { name: title, label: Title }
           - { name: description, label: Description }
           - { name: keywords, label: Keywords, widget: list }
-    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    meta: { path: { widget: string, label: "Path", index_file: "index" } }
   - name: blog
     label: Blog
-    label_singular: 'Blog'
+    label_singular: "Blog"
     folder: blog
-    media_folder: ''
-    public_folder: ''
-    slug: '{{slug}}'
+    media_folder: ""
+    public_folder: ""
+    slug: "{{slug}}"
     create: true
     nested:
       depth: 100
-      summary: '{{title}}'
+      summary: "{{title}}"
     fields:
       - label: Author Image
         name: author_image
         widget: image
-        media_folder: '/blog/'
-        default: 'cc-logo-new.png'
-      - { name: author, label: Author, default: 'ContentConcepts' }
+        media_folder: "/blog/"
+        default: "cc-logo-new.png"
+      - { name: author, label: Author, default: "ContentConcepts" }
       - { name: bio, label: Bio }
       - { name: title, label: Title }
-      - { name: date, label: Date, widget: date, default: ''}
+      - { name: date, label: Date, widget: date, default: "" }
       - { name: previewImage, label: Preview Image, widget: image }
       - { name: excerpt, label: Excerpt }
       - { name: tags, label: Tags, widget: list }
@@ -383,7 +403,7 @@ collections:
     files:
       - label: Pricing
         name: pricing
-        file: 'pricing/index.md'
+        file: "pricing/index.md"
         fields:
           - { name: title, label: Title }
           - { name: heading, label: Heading }
@@ -400,7 +420,11 @@ collections:
                 fields:
                   - { label: id, name: id, widget: number }
                   - { label: Title, name: title }
-                  - { label: Editing Services, name: editingServices, widget: list }
+                  - {
+                      label: Editing Services,
+                      name: editingServices,
+                      widget: list,
+                    }
                   - label: Price
                     name: price
                     widget: object
@@ -410,7 +434,7 @@ collections:
                   - { label: Theme Color, name: themeColor }
       - label: SEO
         name: seoAbout
-        file: 'pricing/seo.md'
+        file: "pricing/seo.md"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
@@ -420,9 +444,9 @@ collections:
     files:
       - label: FAQ
         name: faq
-        file: 'faq.md'
+        file: "faq.md"
         fields:
-          - {label: Title, name: title}
+          - { label: Title, name: title }
           - label: Questions
             name: questions
             widget: list
@@ -435,7 +459,7 @@ collections:
     files:
       - label: Quality Assurance
         name: qualityAssurance
-        file: 'qualityAssurance.md'
+        file: "qualityAssurance.md"
         fields:
           - { label: Title, name: title }
           - { name: body, label: Body, widget: markdown }
@@ -444,7 +468,7 @@ collections:
     files:
       - label: Quote Category
         name: quoteCategory
-        file: 'quoteCategory.md'
+        file: "quoteCategory.md"
         fields:
           - { label: Title, name: title }
           - label: Categories
@@ -458,7 +482,7 @@ collections:
     files:
       - label: SEO Contact
         name: seoContact
-        file: 'seoContact.md'
+        file: "seoContact.md"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
@@ -468,7 +492,7 @@ collections:
     files:
       - label: SEO Blog
         name: seoBlog
-        file: 'seoBlog.md'
+        file: "seoBlog.md"
         fields:
           - { label: Title, name: title }
           - { label: Description, name: description }
