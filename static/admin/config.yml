@@ -248,7 +248,7 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: navTitle, label: Navagation Title }
-      - { name: position, label: Navagation Title Position }
+      - { name: navIndex, label: Navagation Title Position, widget: string }
       - { name: highlight, label: Highlight }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
