@@ -252,6 +252,32 @@ collections:
       - { name: highlight, label: Highlight }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
+      - { name: quoteTitle, label: Flash Banner Title }
+      - label: Editing Details cards
+        name: editingCard
+        widget: list
+        fields:
+          - { label: Card Title, name: title }
+          - { label: card Title, name: image, widget: image }
+          - { label: card Points, name: points, widget: list }
+          - {
+              label: Card Button navigation Link,
+              name: buttonLink,
+              widget: list,
+            }
+          - label: Editor card Links
+            name: editingCardLinks
+            widget: list
+            fields:
+              - { label: Links Container Title, name: title }
+              - { label: Links Container Decription, name: description }
+              - label: Editor Container Links
+                name: links
+                widget: list
+                fields:
+                  - { label: Links Title, name: title }
+                  - { label: Links Description, name: titleLinkDescription }
+                  - { label: Navigate to Link, name: titleLink }
       - label: Features
         name: features
         widget: list
@@ -343,6 +369,15 @@ collections:
               - { label: Order, name: order }
               - { label: Description, name: description }
               - { label: ThemeColor, name: themeColor }
+      - { label: Native Editor Sec Title, name: editorSecTitle }
+      - label: Native Editor Section Title,
+        name: editorSecCards
+        widget: list
+        fields:
+          - { label: Editor Name, name: name }
+          - { label: Editor Designation, name: designation }
+          - { label: Editor Description, name: description }
+          - { label: Editor Image, name: image, widget: list }
       - label: FAQ
         name: faq
         widget: object
