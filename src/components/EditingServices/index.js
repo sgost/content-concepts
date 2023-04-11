@@ -40,33 +40,6 @@ export const query = graphql`
         highlight
         description
         message
-        editorSecTitle
-        quoteTitle
-        editingCard {
-          title
-          points
-          buttonLink
-          image {
-            publicURL
-          }
-          editingCardLinks {
-            title
-            description
-            links {
-              title
-              titleLink
-              titleLinkDescription
-            }
-          }
-        }
-        editorSecCards {
-          name
-          designation
-          description
-          image {
-            publicURL
-          }
-        }
         priceCard {
           pricing {
             title

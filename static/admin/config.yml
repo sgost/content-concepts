@@ -1,7 +1,6 @@
 backend:
-  name: test-repo
-  # name: github
-  # repo: fidisys/contentconcepts-data
+  name: github
+  repo: fidisys/contentconcepts-data
 
 publish_mode: editorial_workflow
 

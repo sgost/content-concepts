@@ -1,13 +1,10 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import { Layout, Button } from "antd"
-import ConnectPreviewSection from "../ConnectTeams";
-import EditingLabel from './editingLabel';
+// import ConnectPreviewSection from "../ConnectTeams";
+// import EditingLabel from './editingLabel';
 import MenuContent from './content';
-import GoogleReviews from "../GoogleReviews/index";
-import ServiceCardSec from "./serviceCard";
-import EditingLinks from "./editingLinks";
-import NativeEditorsSec from "./nativeEditors";
+// import GoogleReviews from "../GoogleReviews/index";
 import EditingLevels from './levels';
 import EditingSamples from './samples';
 import Highlights from './highlights';
@@ -75,26 +72,15 @@ const MenuSection = props => {
           </Sider>
         </Layout>
       </MenuContainer>
-      <ConnectPreviewSection />
-      {data?.quoteTitle && <EditingLabel content={data.quoteTitle} />}
-      {/* <GoogleReviews /> */}
-      {data?.editingCard && data?.editingCard?.map((item) => {
-        return (
-          <div key={item?.title}>
-            <ServiceCardSec content={item} />
-            <EditingLinks content={item?.editingCardLinks} />
-          </div>
-        )
-      })}
+      {/* <ConnectPreviewSection />
+      <EditingLabel />
+      <GoogleReviews /> */}
+      <EditingLevels content={data.editingLevels} />
+      <EditingSamples content={data.editingSample} />
+      <Highlights content={data.editingHighlights} />
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }
-      {data?.quoteTitle && <EditingLabel content={data.quoteTitle} />}
-      <Highlights content={data.editingHighlights} />
-      {data?.editorSecTitle && data.editorSecCards && <NativeEditorsSec content={data.editorSecCards} title={data?.editorSecTitle} />}
-      {data?.quoteTitle && <EditingLabel content={data.quoteTitle} />}
-      <EditingSamples content={data.editingSample} />
-      <EditingLevels content={data.editingLevels} />
     </Fragment>
   )
 }

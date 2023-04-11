@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-// import { Form, Input, Button, Select, message } from 'antd'
-// import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
-// import Email from '../../images/email.svg'
+import { Form, Input, Button, Select, message } from 'antd'
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
+import Email from '../../images/email.svg'
 import connect_img1 from '../../images/connect_img1.svg';
 import connect_img2 from '../../images/connect_img2.svg';
 import connect_img3 from '../../images/connect_img3.svg';
