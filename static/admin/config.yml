@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: fidisys/contentconcepts-data
+  name: test-repo
 
 publish_mode: editorial_workflow
 
@@ -252,6 +251,7 @@ collections:
       - { name: highlight, label: Highlight }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
+      - { name: quoteTitle, label: Flash Banner Title }
       - label: Features
         name: features
         widget: list

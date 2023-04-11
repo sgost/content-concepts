@@ -273,7 +273,7 @@ export const SectionHeading = styled.div`
   }
 `
 
-//samples section
+// samples section
 export const SamplesSection = styled.div`
   background: ${palette.WHITE_COLOR};
   padding: 60px 80px;
@@ -339,7 +339,8 @@ export const TabContent = styled.div`
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     padding: 30px;
-    margin: 30px 0px;
+    margin: 30px auto 0 auto;
+    width: 95%;
   }
   @media (max-width: 576px) {
     padding: 30px 20px 0px;
@@ -352,7 +353,7 @@ export const TabContent = styled.div`
   }
 `
 
-//highlights section
+// highlights section
 export const HighlightsSection = styled.div`
   background: ${palette.PRIMARY_SECTION_BACKGROUND};
   padding: 60px 80px;
@@ -412,7 +413,7 @@ export const HighlightCard = styled.div`
   }
 `
 
-//quality section
+// quality section
 export const QualitySection = styled.div`
   background: ${palette.SECONDARY_SECTION_BACKGROUND};
   padding: 60px 80px;
@@ -467,7 +468,7 @@ export const QualitySection = styled.div`
   }
 `
 
-//service card
+// service card
 export const ServiceCard = styled.div`
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
   background: rgb(255, 255, 255);
@@ -557,30 +558,204 @@ export const EditingLabelConteiner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
-  padding: 30px 0;
+  gap: 4.4vw;
+  padding: 2.2vw 0;
   background-color: ${palette.SECONDARY_SECTION_BACKGROUND};
   .editing_title {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 42px;
+    font-size: 2.07vw;
+    line-height: 3.1vw;
     color: #ffffff;
   }
   .order_now_btn {
-    width: 171px;
-    height: 48px;
+    width: 12.6vw;
+    height: 3.5vw;
     background: #07f5aa;
-    border-radius: 8px;
+    border-radius: 0.5vw;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.1vw;
+    line-height: 1.7vw;
     color: #16386c;
     border: none;
     outline: none;
     cursor: pointer;
+  }
+`
+
+export const ServiceCardPreview = styled.div`
+  background: linear-gradient(
+    93.02deg,
+    #4187ff -7.15%,
+    #1161ea 48.2%,
+    #1444ec 98.16%
+  );
+  .service_card_container {
+    .service_card {
+      display: flex;
+      gap: 3.7vw;
+      padding: 5.1vw 3.7vw;
+      align-items: center;
+      .service_image {
+        width: 45vw;
+        height: 30vw;
+      }
+      .service_desc_div {
+        display: flex;
+        flex-direction: column;
+        .service_card_title {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 2vw;
+          line-height: 2.9vw;
+          color: #fff;
+          margin-bottom: 2.2vw;
+        }
+        .service_points {
+          margin-top: 0.7vw;
+          .nib {
+            width: 1.1vw;
+            height: 1.1vw;
+            margin-top: 0.7vw;
+          }
+          display: flex;
+          justify-content: center;
+          gap: 0.7vw;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 1.3vw;
+          line-height: 2.6vw;
+          color: #fff;
+          opacity: 0.9;
+        }
+
+        .more_details_btn {
+          width: 16.6vw;
+          height: 4.1vw;
+          padding-left: 1.4vw;
+          background: #0038bc;
+          border-radius: 0.5vw;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1.1vw;
+          line-height: 2.9vw;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          color: #ffffff;
+          border: none;
+          outline: none;
+          gap: 0.7vw;
+          margin-top: 2.2vw;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+`
+
+export const EditingLinksPreview = styled.div`
+  padding: 6.5vw 8.8vw;
+  .editing_links_main {
+    .editing_links_title {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 2vw;
+      line-height: 2.9vw;
+      color: #333333;
+    }
+    .editing_links_desc {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.1vw;
+      line-height: 1.7vw;
+      color: #1f173a;
+      margin: 1.4vw 0;
+    }
+    .editing_links_points {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.3vw;
+      line-height: 3.8vw;
+      color: #171717;
+      opacity: 0.9;
+      .links_editing {
+        color: #0038bc;
+      }
+    }
+  }
+`
+
+export const NativeEditorPreview = styled.div`
+  background-color: white;
+  padding: 6.9vw 7.4vw;
+  .native_editor_preview_title {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.07vw;
+    line-height: 3.1vw;
+    text-align: center;
+    color: #333333;
+  }
+
+  .nativeEditor_div {
+    display: grid;
+    width: fit-content;
+    gap: 8.8vw;
+    margin: 7.4vw auto 0 auto;
+    grid-template-columns: 20vw 20vw 20vw;
+    .native_editor_card {
+      background: #ffffff;
+      box-shadow: 0px 0px 0.5vw rgba(21, 39, 73, 0.15);
+      border-radius: 0.5vw;
+      padding: 1.4vw 1.8vw;
+      position: relative;
+      .native_editor_img {
+        width: 7.4vw;
+        height: 7.4vw;
+        background: #ffffff;
+        box-shadow: 0px 0px 1.1vw rgba(21, 39, 73, 0.25);
+        border-radius: 50%;
+        padding: 0.2vw;
+        position: absolute;
+        top: -3.7vw;
+      }
+      .user_card_title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.3vw;
+        line-height: 2vw;
+        color: #1565c0;
+        margin-top: 3.7vw;
+      }
+      .user_card_description {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.8vw;
+        line-height: 1.7vw;
+        color: #666666;
+      }
+      .card_desc_main {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1vw;
+        line-height: 1.7vw;
+        color: #333333;
+        margin-top: 0.7vw;
+      }
+    }
   }
 `

@@ -95,7 +95,7 @@ module.exports = {
       resolve: `gatsby-source-git`,
       options: {
         name: `contentconcepts-data`,
-        remote: `https://github.com/fidisys/contentconcepts-data`,
+        remote: `https://github.com/sgost/contentconcepts-data`,
         branch: `master`,
       },
     },
