@@ -764,3 +764,7 @@ export const NativeEditorPreview = styled.div`
     }
   }
 `
+
+export const EditingCardLinksPreview = styled.div`
+margin-top: 30px;
+`

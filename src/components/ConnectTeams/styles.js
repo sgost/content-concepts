@@ -36,6 +36,7 @@ export const ConnectSection = styled.div`
       .card_img {
         width: 64px;
         height: 64px;
+        border-radius: 50%;
       }
       .card_title {
         font-family: "Poppins";

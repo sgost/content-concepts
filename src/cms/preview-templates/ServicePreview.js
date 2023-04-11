@@ -47,6 +47,16 @@ const ServicePreview = ({ entry, widgetFor, getAsset }) => {
     }
   }
 
+  if (data.hasOwnProperty('connectTools')) {
+    if (data.connectTools) {
+      data.connectTools.map(item => {
+        let getImage = getAsset(item.image);
+        item.image = getImage.toString();
+        return item;
+      });
+    }
+  }
+
   return (
     <Fragment>
       {

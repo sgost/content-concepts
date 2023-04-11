@@ -74,19 +74,23 @@ const MenuSection = props => {
           </Sider>
         </Layout>
       </MenuContainer>
-      {/* <ConnectPreviewSection /> */}
-      <EditingLabel content={data.quoteTitle} />
-      <GoogleReviews />
-      <EditingCardLinks content={data?.editingCard} />
+      {data?.connectToolsToggle && <ConnectPreviewSection
+        title={data?.connectToolsTitle}
+        description={data?.connectToolsDec}
+        content={data?.connectTools}
+      />}
+      {data?.quoteToggle && <EditingLabel content={data} />}
+      {/* <GoogleReviews /> */}
+      {data?.editingCard && <EditingCardLinks content={data?.editingCard} />}
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }
-      {/* <EditingLabel content={data.quoteTitle} /> */}
-      <Highlights content={data.editingHighlights} />
-      <NativeEditorsSec content={data.editorSecCards} title={data?.editorSecTitle} />
-      {/* <EditingLabel content={data.quoteTitle} /> */}
-      <EditingSamples content={data.editingSample} />
-      <EditingLevels content={data.editingLevels} />
+      {data?.quoteToggle && <EditingLabel content={data} />}
+      {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
+      <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />
+      {data?.quoteToggle && <EditingLabel content={data} />}
+      {data?.editingSample?.toggle && <EditingSamples content={data?.editingSample} />}
+      {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}
     </Fragment>
   )
 }

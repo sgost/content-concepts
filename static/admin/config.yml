@@ -1,5 +1,5 @@
 backend:
-  name: test-repo
+  name: git-gateway
 
 publish_mode: editorial_workflow
 
@@ -251,13 +251,30 @@ collections:
       - { name: highlight, label: Highlight }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
+      - { name: connectToolsTitle, label: Connect Tools Section Title }
+      - { name: connectToolsDec, label: Connect Tools Section Description }
+      - {
+          name: connectToolsToggle,
+          label: Toggle to show connect tools container,
+          default: show,
+        }
+      - label: Connect Tools Container
+        name: connectTools
+        widget: list
+        fields:
+          - { label: Title, name: title }
+          - { label: Description, name: description }
+          - { label: Logo, name: image, widget: image }
       - { name: quoteTitle, label: Flash Banner Title }
+      - { name: quoteLink, label: Flash Banner Button Link }
+      - { name: quoteToggle, label: Toggle to show flash banner, default: show }
       - label: Editing Links card
         name: editingCard
         widget: list
         fields:
           - { label: Title, name: title }
           - { label: Card Image, name: image, widget: image }
+          - { label: Card background color, name: backGround, widget: string }
           - { label: Card points, name: points, widget: list }
           - { label: Button Link, name: buttonLink }
           - label: Editor card Sub Links
@@ -326,6 +343,12 @@ collections:
         name: editingSample
         widget: object
         fields:
+          - {
+              label: Show EditingSample Section,
+              name: toggle,
+              default: show,
+              required: false,
+            }
           - { label: Title, name: title, required: false }
           - label: Samples
             name: samples
@@ -340,6 +363,12 @@ collections:
         name: editingHighlights
         widget: object
         fields:
+          - {
+              label: Highlights section toggle,
+              name: toggle,
+              default: show,
+              required: false,
+            }
           - { label: Title, name: title, required: false }
           - label: Highlights
             name: highlights

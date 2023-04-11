@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import ServiceCardSec from "./serviceCard";
 import EditingLinks from "./editingLinks";
+import { EditingCardLinksPreview } from "./styles";
 
 const EditingCardLinks = ({ content }) => {
-    console.log("content", content)
     return (
-        <Fragment>
+        <EditingCardLinksPreview>
             {content?.map((item, i) => {
                 return (
                     <Fragment key={i}>
@@ -14,7 +14,7 @@ const EditingCardLinks = ({ content }) => {
                     </Fragment>
                 )
             })}
-        </Fragment>
+        </EditingCardLinksPreview>
 
     )
 }

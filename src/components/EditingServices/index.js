@@ -40,11 +40,24 @@ export const query = graphql`
         highlight
         description
         message
+        connectToolsTitle
+        connectToolsDec
+        connectToolsToggle
+        connectTools {
+          title
+          description
+          image {
+            publicURL
+          }
+        }
         editorSecTitle
         quoteTitle
+        quoteLink
+        quoteToggle
         editingCard {
           title
           points
+          backgroundColor
           buttonLink
           image {
             publicURL
@@ -84,6 +97,7 @@ export const query = graphql`
           link
         }
         editingLevels {
+          toggle
           title
           subHeading
           levelTypes {
@@ -99,6 +113,7 @@ export const query = graphql`
           }
         }
         editingSample {
+          toggle
           title
           samples {
             id
@@ -114,6 +129,7 @@ export const query = graphql`
           }
         }
         editingHighlights {
+          toggle
           title
           highlights {
             id
