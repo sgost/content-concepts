@@ -11,7 +11,7 @@ import {
   ConnectSection,
 } from './styles';
 
-export const ConnectPreviewSection = () => {
+const ConnectPreviewSection = () => {
   return (
     <ConnectSection>
       <div className="connectSection">
@@ -39,47 +39,4 @@ export const ConnectPreviewSection = () => {
   );
 };
 
-const Contact = props => {
-
-  const [contactContent, setContactContent] = useState({});
-
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: {eq: "home/contact.md"}) {
-        childMarkdownRemark {
-          frontmatter {
-            title
-            call
-            email
-            categories {
-              id
-              title
-              value
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  useEffect(() => {
-    if (data.file) {
-      setContactContent(data.file.childMarkdownRemark.frontmatter);
-    }
-  }, [data.file]);
-
-  return (
-    <Fragment>
-      {
-        data.file &&
-        <ConnectPreviewSection
-          title={contactContent.title}
-          email={contactContent.email}
-          categories={contactContent.categories}
-        />
-      }
-    </Fragment>
-  )
-}
-
-export default Contact
+export default ConnectPreviewSection;

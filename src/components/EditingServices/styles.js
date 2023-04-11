@@ -729,6 +729,11 @@ export const NativeEditorPreview = styled.div`
         padding: 0.2vw;
         position: absolute;
         top: -3.7vw;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
       }
       .user_card_title {
         font-family: "Poppins";

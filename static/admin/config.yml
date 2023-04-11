@@ -328,6 +328,16 @@ collections:
               - { label: id, name: id, widget: number }
               - { label: Description, name: description }
               - { label: Image, name: image, widget: image }
+      - { label: Native Editor Section Title, name: editorSecTitle }
+      - label: Native Editor Section Title,
+        name: editorSecCards
+        widget: list
+        fields:
+          - { label: Editor Name, name: name }
+          - { label: Editor Designation, name: designation }
+          - { label: Editor Description, name: description }
+          - { label: Editor Image, name: image, widget: image }
+
       - label: Service Process
         name: serviceProcess
         widget: object

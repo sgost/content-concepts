@@ -3,11 +3,12 @@ import { Link } from "gatsby"
 import { Layout, Button } from "antd"
 import EditingLabel from './editingLabel';
 import GoogleReviews from "../GoogleReviews/index";
-// import ConnectPreviewSection from "../ConnectTeams";
+import ConnectPreviewSection from "../ConnectTeams";
 import MenuContent from './content';
 import EditingLevels from './levels';
 import EditingSamples from './samples';
 import Highlights from './highlights';
+import NativeEditorsSec from "./nativeEditors";
 import { ProcessPreviewSection } from "../Process"
 import {
   MenuContainer,
@@ -88,7 +89,7 @@ const MenuSection = props => {
       }
       {/* <EditingLabel content={data.quoteTitle} /> */}
       <Highlights content={data.editingHighlights} />
-      {/* <NativeEditorsSec content={data.editorSecCards} title={data?.editorSecTitle} /> */}
+      <NativeEditorsSec content={data.editorSecCards} title={data?.editorSecTitle} />
       {/* <EditingLabel content={data.quoteTitle} /> */}
       <EditingSamples content={data.editingSample} />
       <EditingLevels content={data.editingLevels} />

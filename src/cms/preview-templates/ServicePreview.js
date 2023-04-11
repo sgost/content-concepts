@@ -8,8 +8,8 @@ const ServicePreview = ({ entry, widgetFor, getAsset }) => {
 
   const data = entry.getIn(["data"]).toJS();
 
-  if(data.hasOwnProperty('editingSample')) {
-    if(data.editingSample.samples) {
+  if (data.hasOwnProperty('editingSample')) {
+    if (data.editingSample.samples) {
       data.editingSample.samples.map(sample => {
         var getImage = getAsset(sample.image);
         sample.image = getImage.toString();
@@ -17,12 +17,22 @@ const ServicePreview = ({ entry, widgetFor, getAsset }) => {
       });
     }
   }
-  if(data.hasOwnProperty('editingHighlights')) {
-    if(data.editingHighlights.highlights) {
+  if (data.hasOwnProperty('editingHighlights')) {
+    if (data.editingHighlights.highlights) {
       data.editingHighlights.highlights.map(highlight => {
         var getImage = getAsset(highlight.image);
         highlight.image = getImage.toString();
         return highlight;
+      });
+    }
+  }
+
+  if (data.hasOwnProperty('editorSecCards')) {
+    if (data.editorSecCards) {
+      data.editorSecCards.map(item => {
+        let getImage = getAsset(item.image);
+        item.image = getImage.toString();
+        return item;
       });
     }
   }
