@@ -16,7 +16,7 @@ const EditingServices = ({ data }) => {
       <Customers />
       <Contact />
       {
-        data.markdownRemark.frontmatter.faq &&
+        data.markdownRemark.frontmatter.faq && data.markdownRemark.frontmatter.faq?.toggle &&
         <FAQPreviewSection
           title={data.markdownRemark.frontmatter.faq.title}
           questions={data.markdownRemark.frontmatter.faq.questions}
@@ -151,6 +151,7 @@ export const query = graphql`
           }
         }
         faq {
+          toggle
           title
           questions {
             id

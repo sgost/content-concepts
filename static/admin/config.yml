@@ -275,7 +275,7 @@ collections:
         fields:
           - { label: Title, name: title }
           - { label: Card Image, name: image, widget: image }
-          - { label: Card background color, name: backGround, widget: string }
+          - { label: Card Theme, name: backgroundColor, widget: string }
           - { label: Card points, name: points, widget: list }
           - { label: Button Link, name: buttonLink }
           - label: Editor card Sub Links
@@ -320,6 +320,12 @@ collections:
         name: editingLevels
         widget: object
         fields:
+          - {
+              label: EditingLevels Toggle,
+              name: toggle,
+              default: show,
+              required: false,
+            }
           - { label: Title, name: title, required: false }
           - { label: SubHeading, name: subHeading, required: false }
           - label: Level Types
@@ -409,6 +415,7 @@ collections:
         name: faq
         widget: object
         fields:
+          - { label: FAQ Toggle, name: toggle, default: show, required: false }
           - { label: Title, name: title, required: false }
           - label: Questions
             name: questions
