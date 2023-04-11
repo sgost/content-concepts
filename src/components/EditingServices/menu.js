@@ -19,6 +19,7 @@ import {
   DescSection,
   ButtonSection
 } from './styles';
+import blog_image from "../../images/blog_image.png";
 
 const { Content, Sider } = Layout;
 
@@ -27,7 +28,6 @@ const MenuSection = props => {
   const data = props.content;
 
   const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
   return (
     <Fragment>
       <MenuContainer>
@@ -36,41 +36,7 @@ const MenuSection = props => {
             <MenuContent content={data} description={props.description} preview={props.preview} />
           </Content>
           <Sider>
-            {
-              data.priceCard &&
-              <ServiceCard>
-                <h3>{data.title}</h3>
-                <PriceSection>
-                  <span className="startingText">{data.priceCard.pricing.title}</span>
-                  {
-                    data.priceCard.pricing.price &&
-                    <div className="priceSec">
-                      {getCountry === "Asia/Calcutta" ?
-                        data.priceCard.pricing.price.inr && <span className="priceValue" dangerouslySetInnerHTML={{ __html: data.priceCard.pricing.price.inr }} />
-                        :
-                        data.priceCard.pricing.price.usd && <span className="priceValue" dangerouslySetInnerHTML={{ __html: data.priceCard.pricing.price.usd }} />
-                      }
-                    </div>
-                  }
-                </PriceSection>
-                {
-                  data.priceCard.tagContent &&
-                  <TagContent>
-                    <p>
-                      {data.priceCard.tagContent}
-                    </p>
-                  </TagContent>
-                }
-                <DescSection>
-                  <p>{data.priceCard.content}</p>
-                </DescSection>
-                <ButtonSection>
-                  <Button type="primary">
-                    <Link to="/pricing/">Get Started</Link>
-                  </Button>
-                </ButtonSection>
-              </ServiceCard>
-            }
+            <img src={data?.cardImage?.publicURL ? data?.cardImage?.publicURL : data?.cardImage} alt="card_preview_image" className="blog_image" />
           </Sider>
         </Layout>
       </MenuContainer>
@@ -79,7 +45,7 @@ const MenuSection = props => {
         description={data?.connectToolsDec}
         content={data?.connectTools}
       />}
-      {data?.quoteToggle && <EditingLabel content={data} />}
+      {/* {data?.quoteToggle && <EditingLabel content={data} />} */}
       {/* <GoogleReviews /> */}
       {data?.editingCard && <EditingCardLinks content={data?.editingCard} />}
       {
@@ -87,7 +53,7 @@ const MenuSection = props => {
       }
       {data?.quoteToggle && <EditingLabel content={data} />}
       {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
-      <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />
+      {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
       {data?.quoteToggle && <EditingLabel content={data} />}
       {data?.editingSample?.toggle && <EditingSamples content={data?.editingSample} />}
       {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}

@@ -57,16 +57,25 @@ const ServicePreview = ({ entry, widgetFor, getAsset }) => {
     }
   }
 
+
+  let image = entry.getIn(['data', 'cardImage']);
+  let getImage = getAsset(image);
+
+  const newTestData = {
+    ...data,
+    cardImage: getImage.toString()
+  }
+
   return (
     <Fragment>
       {
-        data.title && <MenuSection content={data} description={widgetFor('body')} preview={true} />
+        newTestData.title && <MenuSection content={newTestData} description={widgetFor('body')} preview={true} />
       }
       {
-        data.faq &&
+        newTestData.faq &&
         <FAQPreviewSection
-          title={data.faq.title}
-          questions={data.faq.questions}
+          title={newTestData.faq.title}
+          questions={newTestData.faq.questions}
         />
       }
     </Fragment>

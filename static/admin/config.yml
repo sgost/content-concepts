@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
 
 publish_mode: editorial_workflow
@@ -250,6 +250,7 @@ collections:
       - { name: navTitle, label: Navagation Title }
       - { name: navIndex, label: Navagation Title Position, widget: number }
       - { name: highlight, label: Highlight }
+      - { name: cardImage, label: Card Image, widget: image }
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
       - { name: connectToolsTitle, label: Connect Tools Section Title }
@@ -299,23 +300,6 @@ collections:
           - { label: Title, name: title }
           - { label: id, name: id, widget: number }
           - { label: Link, name: link, required: false }
-      - label: Price Card
-        name: priceCard
-        widget: object
-        fields:
-          - label: Pricing
-            name: pricing
-            widget: object
-            fields:
-              - { label: Title, name: title }
-              - label: Price
-                name: price
-                widget: object
-                fields:
-                  - { label: INR, name: inr, required: false }
-                  - { label: USD, name: usd, required: false }
-          - { label: Tag Content, name: tagContent }
-          - { label: Content, name: content }
       - label: Editing Levels
         name: editingLevels
         widget: object
@@ -387,6 +371,11 @@ collections:
               - { label: Description, name: description }
               - { label: Image, name: image, widget: image }
       - { label: Native Editor Section Title, name: editorSecTitle }
+      - {
+          label: Native Editor Section Toggle,
+          name: nativeEditorSecToggle,
+          default: show,
+        }
       - label: Native Editor Section Title,
         name: editorSecCards
         widget: list

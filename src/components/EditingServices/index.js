@@ -51,6 +51,7 @@ export const query = graphql`
           }
         }
         editorSecTitle
+        nativeEditorSecToggle
         quoteTitle
         quoteLink
         quoteToggle
@@ -80,16 +81,8 @@ export const query = graphql`
             publicURL
           }
         }
-        priceCard {
-          pricing {
-            title
-            price {
-              inr
-              usd
-            }
-          }
-          tagContent
-          content
+        cardImage {
+          publicURL
         }
         features {
           id

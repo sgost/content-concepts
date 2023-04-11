@@ -37,10 +37,10 @@ export const MenuContainer = styled.div`
     }
   }
   .ant-layout-sider {
-    width: 30% !important;
+    width: 40% !important;
     margin: 0px 30px;
     flex: unset !important;
-    max-width: 30% !important;
+    max-width: 40% !important;
     background: transparent !important;
     @media only screen and (min-width: 576px) and (max-width: 992px) {
       margin: 0px 10px;
@@ -623,6 +623,7 @@ export const ServiceCardPreview = styled.div`
             margin-top: 0.7vw;
           }
           display: flex;
+          width: fit-content;
           justify-content: center;
           gap: 0.7vw;
           font-family: "Poppins";
@@ -766,5 +767,5 @@ export const NativeEditorPreview = styled.div`
 `
 
 export const EditingCardLinksPreview = styled.div`
-margin-top: 30px;
+margin-top: 0;
 `
