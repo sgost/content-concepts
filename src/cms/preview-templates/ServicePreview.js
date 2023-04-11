@@ -37,6 +37,16 @@ const ServicePreview = ({ entry, widgetFor, getAsset }) => {
     }
   }
 
+  if (data.hasOwnProperty('editingCard')) {
+    if (data.editingCard) {
+      data.editingCard.map(item => {
+        let getImage = getAsset(item.image);
+        item.image = getImage.toString();
+        return item;
+      });
+    }
+  }
+
   return (
     <Fragment>
       {

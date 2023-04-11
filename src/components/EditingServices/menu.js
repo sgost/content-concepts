@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { Layout, Button } from "antd"
 import EditingLabel from './editingLabel';
 import GoogleReviews from "../GoogleReviews/index";
+import EditingCardLinks from "./editingCardLinks";
 import ConnectPreviewSection from "../ConnectTeams";
 import MenuContent from './content';
 import EditingLevels from './levels';
@@ -76,14 +77,7 @@ const MenuSection = props => {
       {/* <ConnectPreviewSection /> */}
       <EditingLabel content={data.quoteTitle} />
       <GoogleReviews />
-      {/* {data?.editingCard?.map((item) => {
-        return (
-          <div key={item?.title}>
-            <ServiceCardSec content={item} />
-            <EditingLinks content={item?.editingCardLinks} />
-          </div>
-        )
-      })} */}
+      <EditingCardLinks content={data?.editingCard} />
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }

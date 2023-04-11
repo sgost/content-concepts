@@ -12,7 +12,7 @@ const ServiceCardSec = ({ content }) => {
                     <img src={content?.image?.publicURL ? content?.image?.publicURL : content?.image} alt="service_card" className="service_image" />
                     <div className="service_desc_div">
                         <h1 className="service_card_title">{content?.title}</h1>
-                        {content?.points.map((itm) => {
+                        {content?.points?.map((itm) => {
                             return (
                                 <p className="service_points" key={itm}>
                                     <img src={nib} className="nib" alt="nib" />

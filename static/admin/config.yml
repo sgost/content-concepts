@@ -252,6 +252,28 @@ collections:
       - { name: body, label: Description, widget: markdown }
       - { name: message, label: Message }
       - { name: quoteTitle, label: Flash Banner Title }
+      - label: Editing Links card
+        name: editingCard
+        widget: list
+        fields:
+          - { label: Title, name: title }
+          - { label: Card Image, name: image, widget: image }
+          - { label: Card points, name: points, widget: list }
+          - { label: Button Link, name: buttonLink }
+          - label: Editor card Sub Links
+            name: editingCardLinks
+            widget: list
+            fields:
+              - { label: Links Container Title, name: title }
+              - { label: Links Container Decription, name: description }
+              - label: Editor Container Links
+                name: links
+                widget: list
+                fields:
+                  - { label: Links Title, name: title }
+                  - { label: Links Description, name: titleLinkDescription }
+                  - { label: Navigate to Link, name: titleLink }
+
       - label: Features
         name: features
         widget: list
