@@ -600,8 +600,9 @@ export const ServiceCardPreview = styled.div`
       padding: 5.1vw 3.7vw;
       align-items: center;
       .service_image {
-        width: 45vw;
+        width: 42vw;
         height: 30vw;
+        border-radius: 2vw;
       }
       .service_desc_div {
         display: flex;
@@ -629,8 +630,8 @@ export const ServiceCardPreview = styled.div`
           font-family: "Poppins";
           font-style: normal;
           font-weight: 400;
-          font-size: 1.3vw;
-          line-height: 2.6vw;
+          font-size: 1vw;
+          line-height: 2.3vw;
           color: #fff;
           opacity: 0.9;
         }
