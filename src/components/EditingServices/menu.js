@@ -19,7 +19,6 @@ import {
   DescSection,
   ButtonSection
 } from './styles';
-import blog_image from "../../images/blog_image.png";
 
 const { Content, Sider } = Layout;
 

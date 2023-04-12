@@ -32,7 +32,7 @@ export const MenuContainer = styled.div`
       padding: 0px 10px;
     }
     @media (max-width: 576px) {
-      width: 100%;
+      width: 100% !important;
       padding: 30px 0px;
     }
   }
@@ -584,6 +584,22 @@ export const EditingLabelConteiner = styled.div`
     outline: none;
     cursor: pointer;
   }
+
+  @media (max-width: 756px) {
+    padding: 7vw 4vw;
+    flex-direction: column;
+    align-items: flex-start;
+    .editing_title {
+      font-size: 4vw;
+      line-height: 5vw;
+    }
+    .order_now_btn {
+      width: 34vw;
+      height: 9vw;
+      border-radius: 2vw;
+      font-size: 3vw;
+    }
+  }
 `
 
 export const ServiceCardPreview = styled.div`
@@ -599,10 +615,19 @@ export const ServiceCardPreview = styled.div`
       gap: 3.7vw;
       padding: 5.1vw 3.7vw;
       align-items: center;
+      @media (max-width: 756px) {
+        flex-direction: column;
+        padding: 10vw 3vw;
+      }
+
       .service_image {
-        width: 42vw;
+        width: 53vw;
         height: 30vw;
         border-radius: 2vw;
+        @media (max-width: 756px) {
+          width: 50vw;
+          height: 28vw;
+        }
       }
       .service_desc_div {
         display: flex;
@@ -615,6 +640,10 @@ export const ServiceCardPreview = styled.div`
           line-height: 2.9vw;
           color: #fff;
           margin-bottom: 2.2vw;
+          @media (max-width: 756px) {
+            font-size: 4vw;
+            line-height: 5.9vw;
+          }
         }
         .service_points {
           margin-top: 0.7vw;
@@ -634,6 +663,17 @@ export const ServiceCardPreview = styled.div`
           line-height: 2.3vw;
           color: #fff;
           opacity: 0.9;
+
+          @media (max-width: 756px) {
+            font-size: 2.5vw;
+            line-height: 4.5vw;
+            .nib {
+              width: 3vw;
+              height: 3vw;
+              margin-top: 0.7vw;
+              margin: 2vw 2vw 0 0;
+            }
+          }
         }
 
         .more_details_btn {
@@ -656,6 +696,14 @@ export const ServiceCardPreview = styled.div`
           gap: 0.7vw;
           margin-top: 2.2vw;
           cursor: pointer;
+          @media (max-width: 756px) {
+            width: 44vw;
+            height: 10vw;
+            font-size: 3vw;
+            margin: 4vw auto auto auto;
+            border-radius: 2vw;
+            padding: 0 0 0 5vw;
+          }
         }
       }
     }
@@ -694,12 +742,39 @@ export const EditingLinksPreview = styled.div`
         color: #0038bc;
       }
     }
+
+    @media (max-width: 756px) {
+      .editing_links_title {
+        font-size: 4vw !important;
+        line-height: 5vw !important;
+      }
+      .editing_links_desc {
+        font-size: 3vw;
+        line-height: 4vw;
+      }
+      .editing_links_points {
+        font-size: 2.5vw;
+        margin-top: 4vw;
+      }
+    }
+  }
+
+  @media (max-width: 756px) {
+    padding: 10vw 3vw;
+    .editing_links_title {
+      font-size: 4vw !important;
+      line-height: 5vw !important;
+    }
   }
 `
 
 export const NativeEditorPreview = styled.div`
   background-color: white;
   padding: 6.9vw 7.4vw;
+
+  @media (max-width: 756px) {
+    padding: 6vw 5vw;
+  }
   .native_editor_preview_title {
     font-family: "Poppins";
     font-style: normal;
@@ -708,6 +783,9 @@ export const NativeEditorPreview = styled.div`
     line-height: 3.1vw;
     text-align: center;
     color: #333333;
+    @media (max-width: 756px) {
+      font-size: 3.5vw;
+    }
   }
 
   .nativeEditor_div {
@@ -764,9 +842,35 @@ export const NativeEditorPreview = styled.div`
         margin-top: 0.7vw;
       }
     }
+    @media (max-width: 756px) {
+      display: flex;
+      flex-direction: column;
+      .native_editor_card {
+        padding: 5vw;
+        border-radius: 1.5vw;
+        .native_editor_img {
+          width: 19vw;
+          height: 19vw;
+          top: 3vw;
+        }
+        .user_card_title {
+          font-size: 3vw;
+          margin-top: 20.7vw;
+        }
+        .user_card_description {
+          font-size: 2.3vw;
+          margin-top: 2.5vw;
+        }
+        .card_desc_main {
+          font-size: 2.5vw;
+          line-height: 3.5vw;
+          margin-top: 3vw;
+        }
+      }
+    }
   }
 `
 
 export const EditingCardLinksPreview = styled.div`
-margin-top: 0;
+  margin-top: 0;
 `
