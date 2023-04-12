@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
-import { Layout, Button } from "antd"
+import { Layout } from "antd"
 import EditingLabel from './editingLabel';
 import GoogleReviews from "../GoogleReviews/index";
 import EditingCardLinks from "./editingCardLinks";
@@ -13,11 +12,6 @@ import NativeEditorsSec from "./nativeEditors";
 import { ProcessPreviewSection } from "../Process"
 import {
   MenuContainer,
-  ServiceCard,
-  PriceSection,
-  TagContent,
-  DescSection,
-  ButtonSection
 } from './styles';
 
 const { Content, Sider } = Layout;
@@ -26,7 +20,7 @@ const MenuSection = props => {
 
   const data = props.content;
 
-  const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
   return (
     <Fragment>
       <MenuContainer>
@@ -44,8 +38,8 @@ const MenuSection = props => {
         description={data?.connectToolsDec}
         content={data?.connectTools}
       />}
-      {/* {data?.quoteToggle && <EditingLabel content={data} />} */}
-      {/* <GoogleReviews /> */}
+      {data?.quoteToggle && <EditingLabel content={data} />}
+      <GoogleReviews />
       {data?.editingCard && <EditingCardLinks content={data?.editingCard} />}
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
