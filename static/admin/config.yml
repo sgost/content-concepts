@@ -247,6 +247,22 @@ collections:
       summary: "{{title}}"
     fields:
       - { name: title, label: Title, default: Service Title }
+      - { name: highlight, label: Highlight, default: Highlight Service Text }
+      - { name: body, label: Description, widget: markdown }
+      - label: Features
+        name: features
+        widget: list
+        fields:
+          - { label: Title, name: title, default: Features Title }
+          - { label: id, name: id, widget: number, default: 1 }
+          - {
+              label: Link,
+              name: link,
+              required: false,
+              default: www.google.com,
+            }
+      - { name: message, label: Message, default: Message Text }
+      - { name: cardImage, label: Card Image, widget: image }
       - {
           name: navTitle,
           label: Navagation Title,
@@ -258,10 +274,6 @@ collections:
           default: 1,
           widget: number,
         }
-      - { name: highlight, label: Highlight, default: Highlight Service Text }
-      - { name: cardImage, label: Card Image, widget: image }
-      - { name: body, label: Description, widget: markdown }
-      - { name: message, label: Message, default: Message Text }
       - {
           name: connectToolsTitle,
           label: Connect Tools Section Title,
@@ -467,18 +479,6 @@ collections:
                 }
               - { label: Image, name: image, widget: image }
 
-      - label: Features
-        name: features
-        widget: list
-        fields:
-          - { label: Title, name: title, default: Features Title }
-          - { label: id, name: id, widget: number, default: 1 }
-          - {
-              label: Link,
-              name: link,
-              required: false,
-              default: www.google.com,
-            }
       - label: Editing Levels
         name: editingLevels
         widget: object

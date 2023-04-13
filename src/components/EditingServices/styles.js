@@ -27,7 +27,7 @@ export const MenuContainer = styled.div`
   .ant-layout-content {
     padding: 0px 30px;
     min-height: 280px;
-    width: 70%;
+    width: 50% !important;
     @media only screen and (min-width: 576px) and (max-width: 992px) {
       padding: 0px 10px;
     }
@@ -37,10 +37,10 @@ export const MenuContainer = styled.div`
     }
   }
   .ant-layout-sider {
-    width: 40% !important;
+    width: 50% !important;
     margin: 0px 30px;
     flex: unset !important;
-    max-width: 40% !important;
+    max-width: 50% !important;
     background: transparent !important;
     @media only screen and (min-width: 576px) and (max-width: 992px) {
       margin: 0px 10px;
