@@ -59,6 +59,7 @@ export const query = graphql`
           title
           bulletpoints {
             title
+            link
           }
           backgroundColor
           buttonLink

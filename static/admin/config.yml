@@ -333,6 +333,7 @@ collections:
                   name: title,
                   default: Add some bullet Points,
                 }
+              - { label: Bullet Points Link, name: link, default: www.test.com }
           - { label: Button Link, name: buttonLink, default: www.google.com }
           - label: Editor card Sub Links
             name: editingCardLinks
