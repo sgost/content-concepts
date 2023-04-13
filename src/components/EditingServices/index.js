@@ -57,7 +57,9 @@ export const query = graphql`
         quoteToggle
         editingCard {
           title
-          points
+          bulletpoints {
+            title
+          }
           backgroundColor
           buttonLink
           image {

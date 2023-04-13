@@ -246,15 +246,32 @@ collections:
       depth: 100
       summary: "{{title}}"
     fields:
-      - { name: title, label: Title }
-      - { name: navTitle, label: Navagation Title }
-      - { name: navIndex, label: Navagation Title Position, widget: number }
-      - { name: highlight, label: Highlight }
+      - { name: title, label: Title, default: Service Title }
+      - {
+          name: navTitle,
+          label: Navagation Title,
+          default: Service Title Navigation,
+        }
+      - {
+          name: navIndex,
+          label: Navagation Title Position,
+          default: 1,
+          widget: number,
+        }
+      - { name: highlight, label: Highlight, default: Highlight Service Text }
       - { name: cardImage, label: Card Image, widget: image }
       - { name: body, label: Description, widget: markdown }
-      - { name: message, label: Message }
-      - { name: connectToolsTitle, label: Connect Tools Section Title }
-      - { name: connectToolsDec, label: Connect Tools Section Description }
+      - { name: message, label: Message, default: Message Text }
+      - {
+          name: connectToolsTitle,
+          label: Connect Tools Section Title,
+          default: Connect Tools Section Title,
+        }
+      - {
+          name: connectToolsDec,
+          label: Connect Tools Section Description,
+          default: Connect Tools Section Description,
+        }
       - {
           name: connectToolsToggle,
           label: Toggle to show connect tools container,
@@ -264,92 +281,105 @@ collections:
         name: connectTools
         widget: list
         fields:
-          - { label: Title, name: title }
-          - { label: Description, name: description }
+          - { label: Title, name: title, default: Container Tools Title }
+          - {
+              label: Description,
+              name: description,
+              default: Container Tools description,
+            }
           - { label: Logo, name: image, widget: image }
-      - { name: quoteTitle, label: Flash Banner Title }
-      - { name: quoteLink, label: Flash Banner Button Link }
+      - {
+          name: quoteTitle,
+          label: Flash Banner Title,
+          default: Flash Banner Title,
+        }
+      - {
+          name: quoteLink,
+          label: Flash Banner Button Link,
+          default: www.sample.com,
+        }
       - { name: quoteToggle, label: Toggle to show flash banner, default: show }
       - label: Editing Links card
         name: editingCard
         widget: list
         fields:
-          - { label: Title, name: title }
+          - { label: Title, name: title, default: Editing Links card Title }
           - { label: Card Image, name: image, widget: image }
-          - { label: Card Theme, name: backgroundColor, widget: string }
-          - { label: Card points, name: points, widget: list }
-          - { label: Button Link, name: buttonLink }
+          - {
+              label: Card Theme,
+              name: backgroundColor,
+              widget: string,
+              required: false,
+              default: "blue",
+            }
+          - label: Bullet Points
+            name: bulletpoints
+            widget: list
+            fields:
+              - {
+                  label: Bullet Points,
+                  name: title,
+                  default: Add some bullet Points,
+                }
+          - { label: Button Link, name: buttonLink, default: www.google.com }
           - label: Editor card Sub Links
             name: editingCardLinks
             widget: list
             fields:
-              - { label: Links Container Title, name: title }
-              - { label: Links Container Decription, name: description }
+              - {
+                  label: Links Container Title,
+                  name: title,
+                  default: Links Container Title,
+                }
+              - {
+                  label: Links Container Decription,
+                  name: description,
+                  default: Links Container Decription,
+                }
               - label: Editor Container Links
                 name: links
                 widget: list
                 fields:
-                  - { label: Links Title, name: title }
-                  - { label: Links Description, name: titleLinkDescription }
-                  - { label: Navigate to Link, name: titleLink }
+                  - { label: Links Title, name: title, default: Links Title }
+                  - {
+                      label: Links Description,
+                      name: titleLinkDescription,
+                      default: Links Description,
+                    }
+                  - {
+                      label: Navigate to Link,
+                      name: titleLink,
+                      default: Navigate to Link,
+                    }
+      - label: Service Process
+        name: serviceProcess
+        widget: object
+        fields:
+          - {
+              label: Title,
+              name: title,
+              default: Service Process title,
+              required: false,
+            }
+          - label: Steps
+            name: steps
+            required: false
+            widget: list
+            fields:
+              - {
+                  label: Title,
+                  name: title,
+                  default: Service Process Steps title,
+                }
+              - { label: id, name: id, widget: number, default: 1 }
+              - { label: Order, name: order, default: 1 }
+              - {
+                  label: Description,
+                  name: description,
+                  default: Service Process Steps Description,
+                }
+              - { label: ThemeColor, name: themeColor, default: blue }
 
-      - label: Features
-        name: features
-        widget: list
-        fields:
-          - { label: Title, name: title }
-          - { label: id, name: id, widget: number }
-          - { label: Link, name: link, required: false }
-      - label: Editing Levels
-        name: editingLevels
-        widget: object
-        fields:
-          - {
-              label: EditingLevels Toggle,
-              name: toggle,
-              default: show,
-              required: false,
-            }
-          - { label: Title, name: title, required: false }
-          - { label: SubHeading, name: subHeading, required: false }
-          - label: Level Types
-            name: levelTypes
-            required: false
-            widget: list
-            fields:
-              - { label: Title, name: title }
-              - { label: id, name: id, widget: number }
-              - { label: Theme Color, name: themeColor }
-          - label: Levels
-            name: levels
-            required: false
-            widget: list
-            fields:
-              - { label: Title, name: title }
-              - { label: id, name: id, widget: number }
-              - { label: Copy, name: copy }
-              - { label: Substantive, name: substantive }
-              - { label: Developmental, name: developmental }
-      - label: Editing Sample
-        name: editingSample
-        widget: object
-        fields:
-          - {
-              label: Show EditingSample Section,
-              name: toggle,
-              default: show,
-              required: false,
-            }
-          - { label: Title, name: title, required: false }
-          - label: Samples
-            name: samples
-            required: false
-            widget: list
-            fields:
-              - { label: Title, name: title }
-              - { label: id, name: id, widget: number }
-              - { label: Description, name: description }
-              - { label: Image, name: image, widget: image }
       - label: Editing Highlights
         name: editingHighlights
         widget: object
@@ -360,60 +390,163 @@ collections:
               default: show,
               required: false,
             }
-          - { label: Title, name: title, required: false }
+          - {
+              label: Title,
+              name: title,
+              default: Editing Highlights Title,
+              required: false,
+            }
           - label: Highlights
             name: highlights
             required: false
             widget: list
             fields:
-              - { label: Title, name: title }
-              - { label: id, name: id, widget: number }
-              - { label: Description, name: description }
+              - { label: Title, name: title, default: Highlights Title }
+              - { label: id, name: id, widget: number, default: 1 }
+              - {
+                  label: Description,
+                  name: description,
+                  default: Highlights Description,
+                }
               - { label: Image, name: image, widget: image }
-      - { label: Native Editor Section Title, name: editorSecTitle }
+
+      - {
+          label: Native Editor Section Title,
+          name: editorSecTitle,
+          default: Native Editor Section Title,
+        }
       - {
           label: Native Editor Section Toggle,
           name: nativeEditorSecToggle,
           default: show,
         }
-      - label: Native Editor Section Title,
+      - label: Native Editor Section cards,
         name: editorSecCards
         widget: list
         fields:
-          - { label: Editor Name, name: name }
-          - { label: Editor Designation, name: designation }
-          - { label: Editor Description, name: description }
+          - { label: Editor Name, name: name, default: Editor Name }
+          - {
+              label: Editor Designation,
+              name: designation,
+              default: Editor Designation,
+            }
+          - {
+              label: Editor Description,
+              name: description,
+              default: Editor Description,
+            }
           - { label: Editor Image, name: image, widget: image }
 
-      - label: Service Process
-        name: serviceProcess
+      - label: Editing Sample
+        name: editingSample
         widget: object
         fields:
-          - { label: Title, name: title, required: false }
-          - label: Steps
-            name: steps
+          - {
+              label: Show EditingSample Section,
+              name: toggle,
+              default: show,
+              required: false,
+            }
+          - {
+              label: Title,
+              name: title,
+              default: Editing Sample Container Title,
+              required: false,
+            }
+          - label: Samples
+            name: samples
             required: false
             widget: list
             fields:
-              - { label: Title, name: title }
-              - { label: id, name: id, widget: number }
-              - { label: Order, name: order }
-              - { label: Description, name: description }
-              - { label: ThemeColor, name: themeColor }
+              - { label: Title, name: title, default: Editing Sample Title }
+              - { label: id, name: id, widget: number, default: 1 }
+              - {
+                  label: Description,
+                  name: description,
+                  default: Editing Sample Description,
+                }
+              - { label: Image, name: image, widget: image }
+
+      - label: Features
+        name: features
+        widget: list
+        fields:
+          - { label: Title, name: title, default: Features Title }
+          - { label: id, name: id, widget: number, default: 1 }
+          - {
+              label: Link,
+              name: link,
+              required: false,
+              default: www.google.com,
+            }
+      - label: Editing Levels
+        name: editingLevels
+        widget: object
+        fields:
+          - {
+              label: EditingLevels Toggle,
+              name: toggle,
+              default: show,
+              required: false,
+            }
+          - {
+              label: Title,
+              name: title,
+              default: Editing Levels Title,
+              required: false,
+            }
+          - {
+              label: SubHeading,
+              name: subHeading,
+              default: Editing Levels SubHeading,
+              required: false,
+            }
+          - label: Level Types
+            name: levelTypes
+            required: false
+            widget: list
+            fields:
+              - { label: Title, name: title, default: Level Types Title }
+              - { label: id, name: id, widget: number, default: 1 }
+              - { label: Theme Color, name: themeColor, default: blue }
+          - label: Levels
+            name: levels
+            required: false
+            widget: list
+            fields:
+              - { label: Title, name: title, default: Levels Title }
+              - { label: id, name: id, widget: number, default: 1 }
+              - { label: Copy, name: copy, default: Levels Copy }
+              - {
+                  label: Substantive,
+                  name: substantive,
+                  default: Levels Substantive,
+                }
+              - {
+                  label: Developmental,
+                  name: developmental,
+                  default: Levels Developmental,
+                }
+
       - label: FAQ
         name: faq
         widget: object
         fields:
           - { label: FAQ Toggle, name: toggle, default: show, required: false }
-          - { label: Title, name: title, required: false }
+          - {
+              label: Title,
+              name: title,
+              default: FAQ Container Title,
+              required: false,
+            }
           - label: Questions
             name: questions
             required: false
             widget: list
             fields:
-              - { label: id, name: id, widget: number }
-              - { label: Question, name: question }
-              - { label: Answer, name: answer }
+              - { label: id, name: id, default: 1, widget: number }
+              - { label: Question, name: question, default: FAQ Question }
+              - { label: Answer, name: answer, default: FAQ Answer }
       - { label: Key, name: key }
       - { label: Parent Type, name: parentType }
       - label: SEO
