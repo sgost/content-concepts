@@ -288,6 +288,7 @@ collections:
           name: connectToolsToggle,
           label: Toggle to show connect tools container,
           default: show,
+          reuired: false,
         }
       - label: Connect Tools Container
         name: connectTools
@@ -306,7 +307,7 @@ collections:
         fields:
           - { name: quoteTitle, label: Title, default: Flash Banner Title }
           - { name: quoteLink, label: Link, default: www.sample.com }
-          - { name: quoteToggle, label: Toggle, default: show }
+          - { name: quoteToggle, label: Toggle, default: show, required: false }
       - label: Editing Links card
         name: editingCard
         widget: list
@@ -395,7 +396,7 @@ collections:
         fields:
           - { name: quoteTitle, label: Title, default: Flash Banner Title }
           - { name: quoteLink, label: Link, default: www.sample.com }
-          - { name: quoteToggle, label: Toggle, default: show }
+          - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Highlights
         name: editingHighlights
@@ -460,7 +461,7 @@ collections:
         fields:
           - { name: quoteTitle, label: Title, default: Flash Banner Title }
           - { name: quoteLink, label: Link, default: www.sample.com }
-          - { name: quoteToggle, label: Toggle, default: show }
+          - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Sample
         name: editingSample
