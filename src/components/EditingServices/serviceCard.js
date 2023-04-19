@@ -13,10 +13,10 @@ const ServiceCardSec = ({ content }) => {
                         <h1 className="service_card_title">{content?.title}</h1>
                         {content?.bulletpoints?.map((itm) => {
                             return (
-                                <a href={itm?.link} className="service_points" key={itm?.title} target="_blank" rel="noreferrer">
+                                <p className="service_points" key={itm?.title}>
                                     <img src={nib} className="nib" alt="nib" />
-                                    {itm?.title}
-                                </a>
+                                    <span dangerouslySetInnerHTML={{ __html: itm?.title }} />
+                                </p>
                             )
                         })}
                         <a href={content?.buttonLink}><button className="more_details_btn">More Details (CTA)<ArrowRightOutlined /></button></a>

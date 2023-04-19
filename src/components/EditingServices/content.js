@@ -4,6 +4,7 @@ import { Button } from 'antd'
 import Marker from '../../images/tick_filled.svg';
 import {
   HeadingContainer,
+  SiderImage,
   TypesContainer,
   FeaturesListContainer,
   FeatureSecList,
@@ -19,6 +20,9 @@ const MenuContent = ({ content, description, preview }) => {
       <BreadCrumps>
         <p>Services</p> / <p className='active'>{content.title}</p>
       </BreadCrumps>
+      <SiderImage>
+        <img src={content?.cardImage?.publicURL ? content?.cardImage?.publicURL : content?.cardImage} alt="card_preview_image" className="service_banner_image" />
+      </SiderImage>
       {content &&
         <div>
           <HeadingContainer>
@@ -37,6 +41,7 @@ const MenuContent = ({ content, description, preview }) => {
               preview ? <div>{description}</div> : <div dangerouslySetInnerHTML={{ __html: description }} />
             }
           </TypesContainer>
+
           <FeaturesListContainer>
             {
               content.features && content.features.map(dataItem =>

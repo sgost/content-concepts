@@ -14,7 +14,7 @@ import {
   MenuContainer,
 } from './styles';
 
-const { Content, Sider } = Layout;
+const { Content } = Layout;
 
 const MenuSection = props => {
 
@@ -28,9 +28,7 @@ const MenuSection = props => {
           <Content>
             <MenuContent content={data} description={props.description} preview={props.preview} />
           </Content>
-          <Sider>
-            <img src={data?.cardImage?.publicURL ? data?.cardImage?.publicURL : data?.cardImage} alt="card_preview_image" className="blog_image" />
-          </Sider>
+          <img src={data?.cardImage?.publicURL ? data?.cardImage?.publicURL : data?.cardImage} alt="card_preview_image" className="blog_image" />
         </Layout>
       </MenuContainer>
       {data?.connectToolsToggle && <ConnectPreviewSection

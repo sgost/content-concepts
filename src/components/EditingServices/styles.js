@@ -6,6 +6,12 @@ export const MenuContainer = styled.div`
   padding: 60px 0px;
   max-width: 1100px;
   margin: 0 auto;
+  .blog_image {
+    display: none;
+    @media (max-width: 750px) {
+      display: flex;
+    }
+  }
   @media (min-width: 1500px) {
     max-width: 1300px;
   }
@@ -27,7 +33,7 @@ export const MenuContainer = styled.div`
   .ant-layout-content {
     padding: 0px 30px;
     min-height: 280px;
-    width: 50% !important;
+    ${"" /* width: 50% !important; */}
     @media only screen and (min-width: 576px) and (max-width: 992px) {
       padding: 0px 10px;
     }
@@ -37,7 +43,7 @@ export const MenuContainer = styled.div`
     }
   }
   .ant-layout-sider {
-    width: 50% !important;
+    ${"" /* width: 50% !important; */}
     margin: 0px 30px;
     flex: unset !important;
     max-width: 50% !important;
@@ -80,6 +86,14 @@ export const HeadingContainer = styled.div`
       margin-left: 0;
       line-height: 30px;
     }
+  }
+`
+
+export const SiderImage = styled.div`
+  width: 45%;
+  float: right;
+  @media (max-width: 750px) {
+    display: none;
   }
 `
 
