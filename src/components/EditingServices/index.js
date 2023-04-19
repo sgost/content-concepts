@@ -1,27 +1,34 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import SEO from "../seo"
-import MenuSection from './menu';
+import MenuSection from "./menu"
 import Customers from "../Customers"
-import Contact from "../Contact";
-import { FAQPreviewSection } from "../FAQ";
+import Contact from "../Contact"
+import { FAQPreviewSection } from "../FAQ"
 
 const EditingServices = ({ data }) => {
   return (
     <Fragment>
-      {
-        data.markdownRemark.frontmatter.seo && <SEO title={data.markdownRemark.frontmatter.seo.title} description={data.markdownRemark.frontmatter.seo.description} keywords={data.markdownRemark.frontmatter.seo.keywords} />
-      }
-      <MenuSection content={data.markdownRemark.frontmatter} description={data.markdownRemark.html} />
+      {data.markdownRemark.frontmatter.seo && (
+        <SEO
+          title={data.markdownRemark.frontmatter.seo.title}
+          description={data.markdownRemark.frontmatter.seo.description}
+          keywords={data.markdownRemark.frontmatter.seo.keywords}
+        />
+      )}
+      <MenuSection
+        content={data.markdownRemark.frontmatter}
+        description={data.markdownRemark.html}
+      />
       <Customers />
       <Contact />
-      {
-        data.markdownRemark.frontmatter.faq &&
-        <FAQPreviewSection
-          title={data.markdownRemark.frontmatter.faq.title}
-          questions={data.markdownRemark.frontmatter.faq.questions}
-        />
-      }
+      {data.markdownRemark.frontmatter.faq &&
+        data.markdownRemark.frontmatter.faq?.toggle && (
+          <FAQPreviewSection
+            title={data.markdownRemark.frontmatter.faq.title}
+            questions={data.markdownRemark.frontmatter.faq.questions}
+          />
+        )}
     </Fragment>
   )
 }
@@ -40,16 +47,64 @@ export const query = graphql`
         highlight
         description
         message
-        priceCard {
-          pricing {
+        connectToolsTitle
+        connectToolsDec
+        connectToolsToggle
+        connectTools {
+          title
+          description
+          image {
+            publicURL
+          }
+        }
+        editorSecTitle
+        nativeEditorSecToggle
+        flashBannerTop {
+          quoteTitle
+          quoteLink
+          quoteToggle
+        }
+        flashBannerCenter {
+          quoteTitle
+          quoteLink
+          quoteToggle
+        }
+        flashBannerBottom {
+          quoteTitle
+          quoteLink
+          quoteToggle
+        }
+        editingCard {
+          title
+          bulletpoints {
             title
-            price {
-              inr
-              usd
+            link
+          }
+          backgroundColor
+          buttonLink
+          image {
+            publicURL
+          }
+          editingCardLinks {
+            title
+            description
+            links {
+              title
+              titleLink
+              titleLinkDescription
             }
           }
-          tagContent
-          content
+        }
+        editorSecCards {
+          name
+          designation
+          description
+          image {
+            publicURL
+          }
+        }
+        cardImage {
+          publicURL
         }
         features {
           id
@@ -57,6 +112,7 @@ export const query = graphql`
           link
         }
         editingLevels {
+          toggle
           title
           subHeading
           levelTypes {
@@ -72,6 +128,7 @@ export const query = graphql`
           }
         }
         editingSample {
+          toggle
           title
           samples {
             id
@@ -87,6 +144,7 @@ export const query = graphql`
           }
         }
         editingHighlights {
+          toggle
           title
           highlights {
             id
@@ -108,6 +166,7 @@ export const query = graphql`
           }
         }
         faq {
+          toggle
           title
           questions {
             id

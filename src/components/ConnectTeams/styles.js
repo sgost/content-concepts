@@ -4,6 +4,9 @@ import * as palette from "../../styles/variables"
 export const ConnectSection = styled.div`
   padding: 40px 145px 100px 145px;
   background-color: ${palette.PRIMARY_SECTION_BACKGROUND};
+  @media (max-width: 756px) {
+    padding: 45px;
+  }
   .connectSection {
     display: flex;
     flex-direction: column;
@@ -24,6 +27,10 @@ export const ConnectSection = styled.div`
       font-size: 16px;
       line-height: 32px;
       color: #333333;
+      @media (max-width: 756px) {
+        margin-top: 13px;
+    line-height: 27px;
+      }
     }
   }
 
@@ -32,10 +39,15 @@ export const ConnectSection = styled.div`
     grid-template-columns: auto auto auto auto;
     gap: 30px;
     margin-top: 50px;
+    @media (max-width: 756px) {
+      display: flex;
+    flex-direction: column;
+    }
     .connect_cards {
       .card_img {
         width: 64px;
         height: 64px;
+        border-radius: 50%;
       }
       .card_title {
         font-family: "Poppins";
