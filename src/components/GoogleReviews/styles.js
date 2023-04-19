@@ -21,6 +21,9 @@ export const GoogleReviewsSection = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    .cuGyCz {
+      max-width: 100%;
+    }
     .elfsight-app-ba16b257-c2a1-492e-a143-2644db3fbd22 {
       .dPBwJJ {
         background: #ffffff !important;
