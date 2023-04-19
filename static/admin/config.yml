@@ -300,17 +300,13 @@ collections:
               default: Container Tools description,
             }
           - { label: Logo, name: image, widget: image }
-      - {
-          name: quoteTitle,
-          label: Flash Banner Title,
-          default: Flash Banner Title,
-        }
-      - {
-          name: quoteLink,
-          label: Flash Banner Button Link,
-          default: www.sample.com,
-        }
-      - { name: quoteToggle, label: Toggle to show flash banner, default: show }
+      - label: Flash Banner Top
+        name: flashBannerTop
+        widget: object
+        fields:
+          - { name: quoteTitle, label: Title, default: Flash Banner Title }
+          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteToggle, label: Toggle, default: show }
       - label: Editing Links card
         name: editingCard
         widget: list
@@ -393,6 +389,14 @@ collections:
                 }
               - { label: ThemeColor, name: themeColor, default: blue }
 
+      - label: Flash Banner Center
+        name: flashBannerCenter
+        widget: object
+        fields:
+          - { name: quoteTitle, label: Title, default: Flash Banner Title }
+          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteToggle, label: Toggle, default: show }
+
       - label: Editing Highlights
         name: editingHighlights
         widget: object
@@ -449,6 +453,14 @@ collections:
               default: Editor Description,
             }
           - { label: Editor Image, name: image, widget: image }
+
+      - label: Flash Banner Bottom
+        name: flashBannerBottom
+        widget: object
+        fields:
+          - { name: quoteTitle, label: Title, default: Flash Banner Title }
+          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteToggle, label: Toggle, default: show }
 
       - label: Editing Sample
         name: editingSample

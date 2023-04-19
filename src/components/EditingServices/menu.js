@@ -38,16 +38,16 @@ const MenuSection = props => {
         description={data?.connectToolsDec}
         content={data?.connectTools}
       />}
-      {data?.quoteToggle && <EditingLabel content={data} />}
+      {data?.flashBannerTop?.quoteToggle && <EditingLabel content={data?.flashBannerTop} />}
       <GoogleReviews />
       {data?.editingCard && <EditingCardLinks content={data?.editingCard} />}
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }
-      {data?.quoteToggle && <EditingLabel content={data} />}
+      {data?.flashBannerCenter?.quoteToggle && <EditingLabel content={data?.flashBannerCenter} />}
       {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
       {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
-      {data?.quoteToggle && <EditingLabel content={data} />}
+      {data?.flashBannerBottom?.quoteToggle && <EditingLabel content={data?.flashBannerBottom} />}
       {data?.editingSample?.toggle && <EditingSamples content={data?.editingSample} />}
       {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}
     </Fragment>
