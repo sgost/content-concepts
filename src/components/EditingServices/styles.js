@@ -92,6 +92,7 @@ export const HeadingContainer = styled.div`
 export const SiderImage = styled.div`
   width: 45%;
   float: right;
+  margin-left: 30px;
   @media (max-width: 750px) {
     display: none;
   }
@@ -105,6 +106,15 @@ export const TypesContainer = styled.div`
     line-height: 30px;
     color: ${palette.PRIMARY_TXT_COLOR};
     margin-bottom: 5px;
+  }
+  h1 {
+    margin-top: 23px;
+  }
+  h2 {
+    margin-top: 23px;
+  }
+  h3 {
+    margin-top: 23px;
   }
 `
 
@@ -661,6 +671,10 @@ export const ServiceCardPreview = styled.div`
         }
         .service_points {
           margin-top: 0.7vw;
+          a {
+            color: #fff;
+            text-decoration: underline;
+          }
           .nib {
             width: 1.1vw;
             height: 1.1vw;
