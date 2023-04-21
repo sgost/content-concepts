@@ -116,6 +116,9 @@ export const TypesContainer = styled.div`
   h3 {
     margin-top: 23px;
   }
+ li {
+    list-style: disc !important;
+  }
 `
 
 export const FeaturesListContainer = styled.ul`
