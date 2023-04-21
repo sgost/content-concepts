@@ -8,32 +8,32 @@ media_folder: "assets"
 public_folder: "/"
 
 collections:
-  - label: Service Links
-    name: service Links
-    files:
-      - label: Service Links
-        name: service Links
-        file: "home/footer.md"
-        fields:
-          - {
-              label: Services Links,
-              name: sitemapList,
-              widget: list,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  {
-                    label: Links Editor,
-                    name: sitemap,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Menu Label, name: title },
-                        { label: Link, name: link },
-                      ],
-                  },
-                ],
-            }
+  # - label: Service Links
+  #   name: service Links
+  #   files:
+  #     - label: Service Links
+  #       name: service Links
+  #       file: "home/footer.md"
+  #       fields:
+  #         - {
+  #             label: Services Links,
+  #             name: sitemapList,
+  #             widget: list,
+  #             fields:
+  #               [
+  #                 { label: Title, name: title, widget: string },
+  #                 {
+  #                   label: Links Editor,
+  #                   name: sitemap,
+  #                   widget: list,
+  #                   fields:
+  #                     [
+  #                       { label: Menu Label, name: title },
+  #                       { label: Link, name: link },
+  #                     ],
+  #                 },
+  #               ],
+  #           }
   - label: Home
     name: home
     files:
