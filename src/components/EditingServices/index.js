@@ -45,6 +45,11 @@ export const query = graphql`
       frontmatter {
         title
         highlight
+        btnTxt {
+          quote
+          sample
+          editing
+        }
         description
         message
         connectToolsTitle

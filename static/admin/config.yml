@@ -248,6 +248,13 @@ collections:
     fields:
       - { name: title, label: Title, default: Service Title }
       - { name: highlight, label: Highlight, default: Highlight Service Text }
+      - name: btnTxt
+        label: Button Text
+        widget: object
+        fields:
+          - { label: Get Quote, name: quote, required: false }
+          - { label: Editing Sample, name: sample, required: false }
+          - { label: Editing, name: editing, required: false }
       - { name: body, label: Description, widget: markdown }
       - label: Features
         name: features
