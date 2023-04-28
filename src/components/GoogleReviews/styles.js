@@ -2,6 +2,7 @@ import styled from "styled-components"
 // import * as palette from "../../styles/variables"
 
 export const GoogleReviewsSection = styled.div`
+.google_reviews {
   padding: 75px 39px;
   .review_title {
     display: flex;
@@ -31,4 +32,5 @@ export const GoogleReviewsSection = styled.div`
       }
     }
   }
+}
 `

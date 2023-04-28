@@ -116,13 +116,41 @@ export const TypesContainer = styled.div`
   h3 {
     margin-top: 23px;
   }
- li {
+  li {
     list-style: disc !important;
   }
 `
 
 export const FeaturesListContainer = styled.ul`
   margin: 35px 0px;
+`
+
+export const FeatureLinksContainer = styled.ul`
+margin: 20px 0 20px 0;
+  .FeatureLinks {
+.link_wrapper {
+  display: flex;
+  justify-content: center;
+  .nib_image {
+      width: 15px;
+      height: 15px;
+      margin-top: 8px;
+      margin-right: 10px;
+      opacity: 0.8;
+    }
+    p {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 30px;
+      color: #333333;
+      margin-bottom: 5px;
+       a {
+        color: #0038BC;
+        text-decoration: underline;
+       }
+    }
+  }
+}
 `
 
 export const FeatureSecList = styled.li`
@@ -137,6 +165,7 @@ export const FeatureSecList = styled.li`
   p {
     font-size: 16px;
     margin-left: 12px;
+
     a:hover {
       text-decoration: underline;
     }
@@ -742,7 +771,7 @@ export const ServiceCardPreview = styled.div`
 `
 
 export const EditingLinksPreview = styled.div`
-  padding: 6.5vw 8.8vw;
+  padding: 1vw 8.8vw;
   .editing_links_main {
     .editing_links_title {
       font-family: "Poppins";
@@ -800,7 +829,7 @@ export const EditingLinksPreview = styled.div`
 `
 
 export const NativeEditorPreview = styled.div`
-  background-color: white;
+  background-color: #F5FBFF;
   padding: 6.9vw 7.4vw;
 
   @media (max-width: 756px) {

@@ -31,23 +31,23 @@ const MenuSection = props => {
           <img src={data?.cardImage?.publicURL ? data?.cardImage?.publicURL : data?.cardImage} alt="card_preview_image" className="blog_image" />
         </Layout>
       </MenuContainer>
+      {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
+      {data?.flashBannerTop?.quoteToggle && <EditingLabel content={data?.flashBannerTop} />}
+      {
+        data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
+      }
+      {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
+      <GoogleReviews />
+      {data?.flashBannerCenter?.quoteToggle && <EditingLabel content={data?.flashBannerCenter} />}
+      {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}
       {data?.connectToolsToggle && <ConnectPreviewSection
         title={data?.connectToolsTitle}
         description={data?.connectToolsDec}
         content={data?.connectTools}
       />}
-      {data?.flashBannerTop?.quoteToggle && <EditingLabel content={data?.flashBannerTop} />}
-      <GoogleReviews />
-      {data?.editingCard && <EditingCardLinks content={data?.editingCard} />}
-      {
-        data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
-      }
-      {data?.flashBannerCenter?.quoteToggle && <EditingLabel content={data?.flashBannerCenter} />}
-      {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
-      {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
+      {data?.editingCard && <EditingCardLinks content={data} description={props.description} preview={props.preview} />}
       {data?.flashBannerBottom?.quoteToggle && <EditingLabel content={data?.flashBannerBottom} />}
       {data?.editingSample?.toggle && <EditingSamples content={data?.editingSample} />}
-      {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}
     </Fragment>
   )
 }

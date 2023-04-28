@@ -1,17 +1,19 @@
 import React, { Fragment } from 'react'
 import { Link } from "gatsby"
 import { Button } from 'antd'
-import Marker from '../../images/tick_filled.svg';
+// import Marker from '../../images/tick_filled.svg';
 import {
   HeadingContainer,
   SiderImage,
   TypesContainer,
-  FeaturesListContainer,
-  FeatureSecList,
+  // FeaturesListContainer,
+  // FeatureSecList,
   RefundSection,
   ButtonContainer,
-  BreadCrumps
+  BreadCrumps,
+  FeatureLinksContainer
 } from './styles';
+import nib from "../../images/nib.svg";
 
 const MenuContent = ({ content, description, preview }) => {
 
@@ -31,18 +33,24 @@ const MenuContent = ({ content, description, preview }) => {
               content.highlight && <span>({content.highlight})</span>
             }
           </HeadingContainer>
-          <ButtonContainer>
+          {/* <ButtonContainer>
             <Link to="/pricing/"><Button type="primary">{content?.btnTxt?.quote ? content?.btnTxt?.quote : 'Get Quote'}</Button></Link>
             <Button onClick={() => window.location.href = "#editingSample"}>{content?.btnTxt?.sample ? content?.btnTxt?.sample : 'Check Sample'}</Button>
             <Button onClick={() => window.location.href = "#editingProcess"}>{content?.btnTxt?.editing ? content?.btnTxt?.editing : 'Editing Process'}</Button>
-          </ButtonContainer>
+          </ButtonContainer> */}
+          {/* <TypesContainer>
+            {
+              preview ? <div>{content?.serviceHeader?.description}</div> : <div dangerouslySetInnerHTML={{ __html: description }} />
+            }
+          </TypesContainer> */}
+
           <TypesContainer>
             {
-              preview ? <div>{description}</div> : <div dangerouslySetInnerHTML={{ __html: description }} />
+              preview ? <div>{content?.serviceHeader?.decription}</div> : <div dangerouslySetInnerHTML={{ __html: content?.serviceHeader?.decription }} />
             }
           </TypesContainer>
 
-          <FeaturesListContainer>
+          {/* <FeaturesListContainer>
             {
               content.features && content.features.map(dataItem =>
                 <FeatureSecList key={dataItem.id}>
@@ -55,7 +63,16 @@ const MenuContent = ({ content, description, preview }) => {
                 </FeatureSecList>
               )
             }
-          </FeaturesListContainer>
+          </FeaturesListContainer> */}
+          <FeatureLinksContainer>
+            <div className='FeatureLinks'>
+              {content?.serviceHeader?.serviceLink?.map((item) => {
+                return (
+                  <div className='link_wrapper' key={item?.title}><img src={nib} className='nib_image' alt="nib_image" /><p key={item?.title}>{item?.title}: <span dangerouslySetInnerHTML={{ __html: item?.link }} /></p></div>
+                )
+              })}
+            </div>
+          </FeatureLinksContainer>
           <RefundSection>
             <div dangerouslySetInnerHTML={{ __html: content.message }} />
           </RefundSection>

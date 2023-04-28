@@ -9,7 +9,8 @@ import Services from "../components/Services"
 import Specialization from "../components/Specialization"
 import Testimonial from "../components/Testimonial"
 import Process from "../components/Process"
-import Customers from "../components/Customers"
+// import Customers from "../components/Customers"
+import GoogleReviews from "../components/GoogleReviews"
 import Contact from "../components/Contact"
 import MediumArticles from "../components/MediumArticles"
 import FAQ from "../components/FAQ"
@@ -46,7 +47,8 @@ const IndexPage = () => {
         <Specialization />
         <Testimonial />
         <Process />
-        <Customers />
+        {/* <Customers /> */}
+        <GoogleReviews color="#F5FBFF" />
         <Contact />
         <MediumArticles />
         <FAQ path="home" />

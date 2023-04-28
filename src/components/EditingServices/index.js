@@ -2,8 +2,8 @@ import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import SEO from "../seo"
 import MenuSection from "./menu"
-import Customers from "../Customers"
-import Contact from "../Contact"
+// import Customers from "../Customers"
+// import Contact from "../Contact"
 import { FAQPreviewSection } from "../FAQ"
 
 const EditingServices = ({ data }) => {
@@ -20,8 +20,8 @@ const EditingServices = ({ data }) => {
         content={data.markdownRemark.frontmatter}
         description={data.markdownRemark.html}
       />
-      <Customers />
-      <Contact />
+      {/* <Customers /> */}
+      {/* <Contact /> */}
       {data.markdownRemark.frontmatter.faq &&
         data.markdownRemark.frontmatter.faq?.toggle && (
           <FAQPreviewSection
@@ -45,6 +45,13 @@ export const query = graphql`
       frontmatter {
         title
         highlight
+        serviceHeader {
+          decription
+          serviceLink {
+            title
+            link
+          }
+        }
         btnTxt {
           quote
           sample

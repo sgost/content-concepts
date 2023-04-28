@@ -39,7 +39,7 @@ export const ProcessPreviewSection = ({
 
 const Process = props => {
 
-  const[processContent, setProcessContent] = useState({});
+  const [processContent, setProcessContent] = useState({});
 
   const data = useStaticQuery(graphql`
     query {
@@ -61,7 +61,7 @@ const Process = props => {
   `);
 
   useEffect(() => {
-    if(data.file) {
+    if (data.file) {
       setProcessContent(data.file.childMarkdownRemark.frontmatter);
     }
   }, [data.file]);

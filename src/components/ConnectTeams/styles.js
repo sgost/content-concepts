@@ -3,7 +3,7 @@ import * as palette from "../../styles/variables"
 
 export const ConnectSection = styled.div`
   padding: 40px 145px 100px 145px;
-  background-color: ${palette.PRIMARY_SECTION_BACKGROUND};
+  background-color: ${palette.WHITE_COLOR};
   @media (max-width: 756px) {
     padding: 45px;
   }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as palette from '../../styles/variables';
 
 export const ProcessSection = styled.div`
-  background: ${palette.PRIMARY_SECTION_BACKGROUND};
+  background: white;
   padding: 60px 80px;
   @media only screen and (min-width: 768px) and (max-width: 992px) {
     padding: 45px 50px;

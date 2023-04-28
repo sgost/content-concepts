@@ -7,8 +7,8 @@ import {
 } from './styles';
 import GetQuote from "../GetQuote/index";
 import { Modal } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
-import { Link } from "gatsby";
+// import { ArrowRightOutlined } from '@ant-design/icons';
+// import { Link } from "gatsby";
 import less_arrow from "../../images/less_arrow.svg";
 
 const PriceEstimate = () => {
@@ -66,7 +66,7 @@ const PriceEstimate = () => {
             <PriceEstimateMain>
                 <div id="PrizeEstimation">
                     <PriceEstimateContainer>
-                        <p id="map"><div className="round">1</div> Enter wordcount <img src={less_arrow} className="less_arrow" /> <div className="round">2</div> Select Service <img src={less_arrow} className="less_arrow" /><div className="round">3</div> Check pricing & upload</p>
+                        <p id="map"><div className="round">1</div> Enter wordcount <img src={less_arrow} className="less_arrow" alt="less_arrow" /> <div className="round">2</div> Select Service <img src={less_arrow} className="less_arrow" alt="less_arrow" /><div className="round">3</div> Check pricing & upload</p>
                         <PriceEstimateContainerb1>
                             <div id="slide_label">
                                 <h1>Calculate your editing fee</h1>
