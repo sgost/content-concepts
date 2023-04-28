@@ -1,6 +1,7 @@
 backend:
-  name: github
-  repo: sgost/contentconcepts-data
+  name: test-repo
+  # name: github
+  # repo: sgost/contentconcepts-data
 
 publish_mode: editorial_workflow
 
@@ -246,30 +247,6 @@ collections:
       depth: 100
       summary: "{{title}}"
     fields:
-      - { name: title, label: Title, default: Service Title }
-      - { name: highlight, label: Highlight, default: Highlight Service Text }
-      - name: btnTxt
-        label: Button Text
-        widget: object
-        fields:
-          - { label: Get Quote, name: quote, required: false }
-          - { label: Editing Sample, name: sample, required: false }
-          - { label: Editing, name: editing, required: false }
-      - { name: body, label: Description, widget: markdown }
-      - label: Features
-        name: features
-        widget: list
-        fields:
-          - { label: Title, name: title, default: Features Title }
-          - { label: id, name: id, widget: number, default: 1 }
-          - {
-              label: Link,
-              name: link,
-              required: false,
-              default: www.google.com,
-            }
-      - { name: message, label: Message, default: Message Text }
-      - { name: cardImage, label: Card Image, widget: image }
       - {
           name: navTitle,
           label: Navagation Title,
@@ -281,33 +258,70 @@ collections:
           default: 1,
           widget: number,
         }
+      - { name: title, label: Title, default: Service Title }
+      - { name: highlight, label: Highlight, default: Highlight Service Text }
+      - name: serviceHeader
+        label: Service Description
+        widget: object
+        fields:
+          - { label: Description, name: decription, default: Test description }
+          - name: serviceLink
+            label: Service Heading Links
+            widget: list
+            fields:
+              - {
+                  label: Title,
+                  name: title,
+                  default: Test Title,
+                  required: false,
+                }
+              - { label: Link, name: link, default: Test Link, required: false }
+
+      - name: btnTxt
+        label: Button Text
+        widget: object
+        fields:
+          - {
+              label: Get Quote,
+              name: quote,
+              default: Get Quote,
+              required: false,
+            }
+          - {
+              label: Editing Sample,
+              name: sample,
+              default: Editing Sample,
+              required: false,
+            }
+          - { label: Editing, name: editing, default: Editing, required: false }
+
       - {
-          name: connectToolsTitle,
-          label: Connect Tools Section Title,
-          default: Connect Tools Section Title,
+          label: Native Editor Section Title,
+          name: editorSecTitle,
+          default: Native Editor Section Title,
         }
       - {
-          name: connectToolsDec,
-          label: Connect Tools Section Description,
-          default: Connect Tools Section Description,
-        }
-      - {
-          name: connectToolsToggle,
-          label: Toggle to show connect tools container,
+          label: Native Editor Section Toggle,
+          name: nativeEditorSecToggle,
           default: show,
-          reuired: false,
         }
-      - label: Connect Tools Container
-        name: connectTools
+      - label: Native Editor Section cards,
+        name: editorSecCards
         widget: list
         fields:
-          - { label: Title, name: title, default: Container Tools Title }
+          - { label: Editor Name, name: name, default: Editor Name }
           - {
-              label: Description,
-              name: description,
-              default: Container Tools description,
+              label: Editor Designation,
+              name: designation,
+              default: Editor Designation,
             }
-          - { label: Logo, name: image, widget: image }
+          - {
+              label: Editor Description,
+              name: description,
+              default: Editor Description,
+            }
+          - { label: Editor Image, name: image, widget: image }
+
       - label: Flash Banner Top
         name: flashBannerTop
         widget: object
@@ -315,59 +329,7 @@ collections:
           - { name: quoteTitle, label: Title, default: Flash Banner Title }
           - { name: quoteLink, label: Link, default: www.sample.com }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
-      - label: Editing Links card
-        name: editingCard
-        widget: list
-        fields:
-          - { label: Title, name: title, default: Editing Links card Title }
-          - { label: Card Image, name: image, widget: image }
-          - {
-              label: Card Theme,
-              name: backgroundColor,
-              widget: string,
-              required: false,
-              default: "blue",
-            }
-          - label: Bullet Points
-            name: bulletpoints
-            widget: list
-            fields:
-              - {
-                  label: Bullet Points,
-                  name: title,
-                  default: Add some bullet Points,
-                }
-              - { label: Bullet Points Link, name: link, default: www.test.com }
-          - { label: Button Link, name: buttonLink, default: www.google.com }
-          - label: Editor card Sub Links
-            name: editingCardLinks
-            widget: list
-            fields:
-              - {
-                  label: Links Container Title,
-                  name: title,
-                  default: Links Container Title,
-                }
-              - {
-                  label: Links Container Decription,
-                  name: description,
-                  default: Links Container Decription,
-                }
-              - label: Editor Container Links
-                name: links
-                widget: list
-                fields:
-                  - { label: Links Title, name: title, default: Links Title }
-                  - {
-                      label: Links Description,
-                      name: titleLinkDescription,
-                      default: Links Description,
-                    }
-                  - {
-                      label: Navigate to Link,
-                      name: titleLink,
-                      default: Navigate to Link,
-                    }
+
       - label: Service Process
         name: serviceProcess
         widget: object
@@ -396,14 +358,6 @@ collections:
                   default: Service Process Steps Description,
                 }
               - { label: ThemeColor, name: themeColor, default: blue }
-
-      - label: Flash Banner Center
-        name: flashBannerCenter
-        widget: object
-        fields:
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
-          - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Highlights
         name: editingHighlights
@@ -435,70 +389,13 @@ collections:
                 }
               - { label: Image, name: image, widget: image }
 
-      - {
-          label: Native Editor Section Title,
-          name: editorSecTitle,
-          default: Native Editor Section Title,
-        }
-      - {
-          label: Native Editor Section Toggle,
-          name: nativeEditorSecToggle,
-          default: show,
-        }
-      - label: Native Editor Section cards,
-        name: editorSecCards
-        widget: list
-        fields:
-          - { label: Editor Name, name: name, default: Editor Name }
-          - {
-              label: Editor Designation,
-              name: designation,
-              default: Editor Designation,
-            }
-          - {
-              label: Editor Description,
-              name: description,
-              default: Editor Description,
-            }
-          - { label: Editor Image, name: image, widget: image }
-
-      - label: Flash Banner Bottom
-        name: flashBannerBottom
+      - label: Flash Banner Center
+        name: flashBannerCenter
         widget: object
         fields:
           - { name: quoteTitle, label: Title, default: Flash Banner Title }
           - { name: quoteLink, label: Link, default: www.sample.com }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
-
-      - label: Editing Sample
-        name: editingSample
-        widget: object
-        fields:
-          - {
-              label: Show EditingSample Section,
-              name: toggle,
-              default: show,
-              required: false,
-            }
-          - {
-              label: Title,
-              name: title,
-              default: Editing Sample Container Title,
-              required: false,
-            }
-          - label: Samples
-            name: samples
-            required: false
-            widget: list
-            fields:
-              - { label: Title, name: title, default: Editing Sample Title }
-              - { label: id, name: id, widget: number, default: 1 }
-              - {
-                  label: Description,
-                  name: description,
-                  default: Editing Sample Description,
-                }
-              - { label: Image, name: image, widget: image }
 
       - label: Editing Levels
         name: editingLevels
@@ -548,6 +445,119 @@ collections:
                   name: developmental,
                   default: Levels Developmental,
                 }
+
+      - {
+          name: connectToolsTitle,
+          label: Connect Tools Section Title,
+          default: Connect Tools Section Title,
+        }
+      - {
+          name: connectToolsDec,
+          label: Connect Tools Section Description,
+          default: Connect Tools Section Description,
+        }
+      - {
+          name: connectToolsToggle,
+          label: Toggle to show connect tools container,
+          default: show,
+          reuired: false,
+        }
+      - label: Connect Tools Container
+        name: connectTools
+        widget: list
+        fields:
+          - { label: Title, name: title, default: Container Tools Title }
+          - {
+              label: Description,
+              name: description,
+              default: Container Tools description,
+            }
+          - { label: Logo, name: image, widget: image }
+
+      - label: Editing Links card
+        name: editingCard
+        widget: list
+        fields:
+          - { label: Title, name: title, default: Editing Links card Title }
+          - { label: Card Image, name: image, widget: image }
+          - {
+              label: Card Theme,
+              name: backgroundColor,
+              widget: string,
+              required: false,
+              default: "blue",
+            }
+          - label: Bullet Points
+            name: bulletpoints
+            widget: list
+            fields:
+              - {
+                  label: Bullet Points,
+                  name: title,
+                  default: Add some bullet Points,
+                }
+              - { label: Bullet Points Link, name: link, default: www.test.com }
+              - {
+                  label: Button Link,
+                  name: buttonLink,
+                  default: www.google.com,
+                }
+
+      - label: Features
+        name: features
+        widget: list
+        fields:
+          - { label: Title, name: title, default: Features Title }
+          - { label: id, name: id, widget: number, default: 1 }
+          - {
+              label: Link,
+              name: link,
+              required: false,
+              default: www.google.com,
+            }
+
+      - { name: body, label: Description, widget: markdown }
+
+      - { name: message, label: Message, default: Message Text }
+      - { name: cardImage, label: Card Image, widget: image }
+
+      - label: Flash Banner Bottom
+        name: flashBannerBottom
+        widget: object
+        fields:
+          - { name: quoteTitle, label: Title, default: Flash Banner Title }
+          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteToggle, label: Toggle, default: show, required: false }
+
+      - label: Editing Sample
+        name: editingSample
+        widget: object
+        fields:
+          - {
+              label: Show EditingSample Section,
+              name: toggle,
+              default: show,
+              required: false,
+            }
+          - {
+              label: Title,
+              name: title,
+              default: Editing Sample Container Title,
+              required: false,
+            }
+          - label: Samples
+            name: samples
+            required: false
+            widget: list
+            fields:
+              - { label: Title, name: title, default: Editing Sample Title }
+              - { label: id, name: id, widget: number, default: 1 }
+              - {
+                  label: Description,
+                  name: description,
+                  default: Editing Sample Description,
+                }
+              - { label: Image, name: image, widget: image }
 
       - label: FAQ
         name: faq

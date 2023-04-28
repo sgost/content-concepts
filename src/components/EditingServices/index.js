@@ -97,15 +97,6 @@ export const query = graphql`
           image {
             publicURL
           }
-          editingCardLinks {
-            title
-            description
-            links {
-              title
-              titleLink
-              titleLinkDescription
-            }
-          }
         }
         editorSecCards {
           name

@@ -130,7 +130,6 @@ margin: 20px 0 20px 0;
   .FeatureLinks {
 .link_wrapper {
   display: flex;
-  justify-content: center;
   .nib_image {
       width: 15px;
       height: 15px;
