@@ -9,6 +9,7 @@ import GetQuote from "../GetQuote/index";
 import { Modal } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Link } from "gatsby";
+import less_arrow from "../../images/less_arrow.svg";
 
 const PriceEstimate = () => {
     const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -65,7 +66,7 @@ const PriceEstimate = () => {
             <PriceEstimateMain>
                 <div id="PrizeEstimation">
                     <PriceEstimateContainer>
-                        <p id="map">1. Enter wordcount <ArrowRightOutlined className="icon" /> 2. Select Service <ArrowRightOutlined className="icon" /> 3. Check pricing & upload</p>
+                        <p id="map"><div className="round">1</div> Enter wordcount <img src={less_arrow} className="less_arrow" /> <div className="round">2</div> Select Service <img src={less_arrow} className="less_arrow" /><div className="round">3</div> Check pricing & upload</p>
                         <PriceEstimateContainerb1>
                             <div id="slide_label">
                                 <h1>Calculate your editing fee</h1>
@@ -79,7 +80,7 @@ const PriceEstimate = () => {
                                         <p></p>
                                         :
                                         <>
-                                            <p>Estimated return on   {dayName}, {monthName} {dayNumber}, {year}</p>
+                                            <p>*Estimated return on   {dayName}, {monthName} {dayNumber}, {year}</p>
                                         </>
                                     }
                                 </div>
@@ -99,7 +100,7 @@ const PriceEstimate = () => {
                                             ><div id="radio1"><div id="radio2"></div></div>{paymap.title}</button>
                                         </>
                                     )}
-                                    <label htmlFor="firstName"><Link to="/pricing/#pricing">For details on each service, check the Pricing Table below</Link></label>
+                                    {/* <label htmlFor="firstName"><Link to="/pricing/#pricing">For details on each service, check the Pricing Table below</Link></label> */}
                                 </div>
                             </div>
                         </PriceEstimateContainerb1>
@@ -125,7 +126,7 @@ const PriceEstimate = () => {
                                         <h1>-</h1>
                                     </div>
                                     <div id="p_b_bottom">
-                                        <button>Proceed to Upload</button>
+                                        <button>Upload your Document</button>
                                     </div>
                                 </PriceEstimateContainerb2>
                                 :
@@ -162,11 +163,11 @@ const PriceEstimate = () => {
                                                     </div>
                                                     {finalpay ?
                                                         <div id="p_b_bottom">
-                                                            <button onClick={() => setVisible(true)}>Proceed to Upload</button>
+                                                            <button onClick={() => setVisible(true)}>Upload your Document</button>
                                                         </div>
                                                         :
                                                         <div id="p_b_bottom">
-                                                            <button>Proceed to Upload</button>
+                                                            <button>Upload your Documents</button>
                                                         </div>
                                                     }
                                                 </PriceEstimateContainerb2>
