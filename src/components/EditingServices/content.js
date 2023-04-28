@@ -76,10 +76,11 @@ const MenuContent = ({ content, description, preview }) => {
           <RefundSection>
             <div dangerouslySetInnerHTML={{ __html: content.message }} />
           </RefundSection>
+
           <ButtonContainer>
-            <Link to="/pricing/"><Button type="primary">Get Quote</Button></Link>
-            <Button onClick={() => window.location.href = "#editingSample"}>Check Sample</Button>
-            <Button onClick={() => window.location.href = "#editingProcess"}>Editing Process</Button>
+            <Link to="/pricing/"><Button type="primary">{content?.btnTxt?.quote ? content?.btnTxt?.quote : 'Get Quote'}</Button></Link>
+            <Button onClick={() => window.location.href = "#editingSample"}>{content?.btnTxt?.sample ? content?.btnTxt?.sample : 'Check Sample'}</Button>
+            <Button onClick={() => window.location.href = "#editingProcess"}>{content?.btnTxt?.editing ? content?.btnTxt?.editing : 'Editing Process'}</Button>
           </ButtonContainer>
         </div>
       }
