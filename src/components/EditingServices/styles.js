@@ -718,7 +718,7 @@ export const ServiceCardPreview = styled.div`
           font-family: "Poppins";
           font-style: normal;
           font-weight: 400;
-          font-size: 1vw;
+          font-size: 1.2vw;
           line-height: 2.3vw;
           color: #fff;
           opacity: 0.9;

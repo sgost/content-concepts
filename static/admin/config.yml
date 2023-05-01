@@ -502,18 +502,18 @@ collections:
                   default: www.google.com,
                 }
 
-      - label: Features
-        name: features
-        widget: list
-        fields:
-          - { label: Title, name: title, default: Features Title }
-          - { label: id, name: id, widget: number, default: 1 }
-          - {
-              label: Link,
-              name: link,
-              required: false,
-              default: www.google.com,
-            }
+      # - label: Features
+      #   name: features
+      #   widget: list
+      #   fields:
+      #     - { label: Title, name: title, default: Features Title }
+      #     - { label: id, name: id, widget: number, default: 1 }
+      #     - {
+      #         label: Link,
+      #         name: link,
+      #         required: false,
+      #         default: www.google.com,
+      #       }
 
       - { name: body, label: Description, widget: markdown }
 

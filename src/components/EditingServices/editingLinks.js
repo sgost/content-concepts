@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Button } from 'antd'
-import Marker from '../../images/tick_filled.svg';
+// import Marker from '../../images/tick_filled.svg';
 import {
     EditingLinksPreview,
     TypesContainer,
-    FeaturesListContainer,
-    FeatureSecList,
+    // FeaturesListContainer,
+    // FeatureSecList,
     RefundSection,
     ButtonContainer,
 } from "./styles";
@@ -20,7 +20,7 @@ const EditingLinks = ({ content, description, preview }) => {
                     preview ? <div>{description}</div> : <div dangerouslySetInnerHTML={{ __html: description }} />
                 }
             </TypesContainer>
-            <FeaturesListContainer>
+            {/* <FeaturesListContainer>
                 {
                     content.features && content.features.map(dataItem =>
                         <FeatureSecList key={dataItem.id}>
@@ -33,7 +33,7 @@ const EditingLinks = ({ content, description, preview }) => {
                         </FeatureSecList>
                     )
                 }
-            </FeaturesListContainer>
+            </FeaturesListContainer> */}
             <RefundSection>
                 <div dangerouslySetInnerHTML={{ __html: content.message }} />
             </RefundSection>

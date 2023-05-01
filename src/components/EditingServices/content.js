@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from "gatsby"
 import { Button } from 'antd'
-// import Marker from '../../images/tick_filled.svg';
+import Marker from '../../images/tick_filled.svg';
 import {
   HeadingContainer,
   SiderImage,
@@ -13,7 +13,7 @@ import {
   BreadCrumps,
   FeatureLinksContainer
 } from './styles';
-import nib from "../../images/nib.svg";
+// import nib from "../../images/nib.svg";
 
 const MenuContent = ({ content, description, preview }) => {
 
@@ -68,7 +68,7 @@ const MenuContent = ({ content, description, preview }) => {
             <div className='FeatureLinks'>
               {content?.serviceHeader?.serviceLink?.map((item) => {
                 return (
-                  <div className='link_wrapper' key={item?.title}><img src={nib} className='nib_image' alt="nib_image" /><p key={item?.title}>{item?.title}: <span dangerouslySetInnerHTML={{ __html: item?.link }} /></p></div>
+                  <div className='link_wrapper' key={item?.title}><img src={Marker} className='nib_image' alt="nib_image" /><p key={item?.title}>{item?.title && item?.title + ": "} <span dangerouslySetInnerHTML={{ __html: item?.link }} /></p></div>
                 )
               })}
             </div>
