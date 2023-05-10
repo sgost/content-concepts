@@ -34,9 +34,16 @@ const IndexPage = () => {
 
   const seoData = data.file.childMarkdownRemark.frontmatter;
 
+  const initialOptions = {
+    "client-id": "AR_91GIac11DOZex5XHw9vYSjGmHPXTM3LbhIX0bbPShcUHlgTdwcT7jPgWdQt-ocJR67nXXOYDwtxSz",
+    "currency": "USD",
+    "intent": "capture",
+    "data-client-token": "abc123xyz==",
+};
+
   return (
     <PayPalScriptProvider
-      options={{ "client-id": "AR_91GIac11DOZex5XHw9vYSjGmHPXTM3LbhIX0bbPShcUHlgTdwcT7jPgWdQt-ocJR67nXXOYDwtxSz" }}
+      options={{ "client-id": "AR_91GIac11DOZex5XHw9vYSjGmHPXTM3LbhIX0bbPShcUHlgTdwcT7jPgWdQt-ocJR67nXXOYDwtxSz","currency": "USD", }}
     >
       <Fragment>
         <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />

@@ -44,13 +44,19 @@ const Layout = props => {
   const [showFooter, setShowFooter] = useState(true);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (window.location.pathname === '/sitemap/') {
+      if (((window.location.pathname === '/sitemap/')
+         || (window.location.pathname === '/about/') 
+         || (window.location.pathname === '/contact/')
+         || (window.location.pathname === '/blog')
+         || (window.location.pathname.includes('pricing')) 
+         || (window.location.pathname.includes('services')
+         ))) {
         setShowFooter(false);
       } else {
         setShowFooter(true);
       }
     }
-  }, []);
+  }, [window.location.pathname]);
 
   return (
     <>
