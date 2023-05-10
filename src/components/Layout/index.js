@@ -56,7 +56,7 @@ const Layout = props => {
         setShowFooter(true);
       }
     }
-  }, [window.location.pathname]);
+  }, [typeof window !== 'undefined' && window.location.pathname]);
 
   return (
     <>
