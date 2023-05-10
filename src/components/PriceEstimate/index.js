@@ -7,8 +7,6 @@ import {
 } from './styles';
 import GetQuote from "../GetQuote/index";
 import { Modal } from 'antd';
-// import { ArrowRightOutlined } from '@ant-design/icons';
-// import { Link } from "gatsby";
 import less_arrow from "../../images/less_arrow.svg";
 
 const PriceEstimate = () => {
@@ -39,6 +37,7 @@ const PriceEstimate = () => {
     const [pay, setpay] = useState(null);
     const [toggleState, setToggleState] = useState("");
     const [currency] = useState(checkCurrency);
+    const [priceRate, setPriceRate] = useState('');
 
     const toggleTab = index => {
         setToggleState(index)
@@ -96,24 +95,16 @@ const PriceEstimate = () => {
                                                         ? "pay_block2_container1 pay_block2_container2"
                                                         : "pay_block2_container1"
                                                 }
-                                                onClick={() => toggleTab(i)}
+                                                onClick={() => { toggleTab(i); setPriceRate(currency === 4 ? paymap.rupees : paymap.dollers) }}
                                             ><div id="radio1"><div id="radio2"></div></div>{paymap.title}</button>
                                         </>
                                     )}
-                                    {/* <label htmlFor="firstName"><Link to="/pricing/#pricing">For details on each service, check the Pricing Table below</Link></label> */}
                                 </div>
                             </div>
                         </PriceEstimateContainerb1>
                         {
                             toggleState === "" ?
                                 <PriceEstimateContainerb2 >
-                                    {/* <div id="p_b_top_main">
-                                        {getCountry === "Asia/Calcutta" ?
-                                            <button onClick={() => setcurrency(4)} className={currency === 4 ? "currency1 currency2" : "currency1"}>₹ INR </button>
-                                            :
-                                            <button onClick={() => setcurrency(5)} className={currency === 5 ? "currency1 currency2" : "currency1"}>$ USD</button>
-                                        }
-                                    </div> */}
                                     <div id="p_b_top">
                                         <h1>Total Price</h1>
                                         <div id="prize_box">
@@ -135,10 +126,6 @@ const PriceEstimate = () => {
                                         <>
                                             {toggleState === i && (
                                                 <PriceEstimateContainerb2 key={i}>
-                                                    {/* <div id="p_b_top_main">
-                                                        <button onClick={() => setcurrency(5)} className={currency === 5 ? "currency1 currency2" : "currency1"}>₹ USD </button>
-                                                        <button onClick={() => setcurrency(4)} className={currency === 4 ? "currency1 currency2" : "currency1"}>$ INR</button>
-                                                    </div> */}
                                                     <div id="p_b_top">
                                                         <h1>Total Price</h1>
                                                         <div id="prize_box">
@@ -149,10 +136,6 @@ const PriceEstimate = () => {
                                                             }
                                                         </div>
                                                     </div>
-                                                    {/* <div id="p_b_top_main2">
-                                                        <button onClick={() => setcurrency(5)} className={currency === 5 ? "currency1 currency2" : "currency1"}>₹ USD </button>
-                                                        <button onClick={() => setcurrency(4)} className={currency === 4 ? "currency1 currency2" : "currency1"}>$ INR</button>
-                                                    </div> */}
                                                     <div id="p_b_middle">
                                                         <h1>Estimated return on</h1>
                                                         {!finalpay ?
@@ -187,7 +170,6 @@ const PriceEstimate = () => {
                 okButtonProps={{ style: { display: 'none' } }}
                 cancelButtonProps={{ style: { display: 'none' } }}
                 onCancel={handelCancel}
-
             >
                 <GetQuote
                     wordcount={finalpay}
@@ -198,6 +180,7 @@ const PriceEstimate = () => {
                     year={year}
                     dayName={dayName}
                     monthName={monthName}
+                    priceRate={priceRate}
                 />
             </Modal>
         </>

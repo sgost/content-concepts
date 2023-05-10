@@ -11,7 +11,7 @@ import logoSVG from "../../images/logo.svg"
 import PaypalGateWayBtn from "../PaypalBtn/index";
 
 
-const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, dayName, monthName }) => {
+const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, dayName, monthName, priceRate }) => {
 
   const tailLayout = {
     wrapperCol: { offset: 5, span: 16 },
@@ -21,10 +21,37 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   const currencyPrize = currency === 4 ? "₹" + Math.round(MainPrize) : currency === 5 ? "$" + Math.round(MainPrize) : "₹" + Math.round(MainPrize);
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
+  const [designation, setDesignation] = useState("");
+  const [address, setAddress] = useState("");
 
   const [errors, setErrors] = useState("");
   const [mobNo, setMobNo] = useState();
   const [showUpload, setShowUpload] = useState(true);
+
+  // convert amount in text formate
+  const doConvert = (value) => {
+    let numberInput = value;
+    let myDiv = document.querySelector('#result');
+
+    let oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
+      'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+    let tenth = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    if (numberInput.toString().length > 7) return myDiv.innerHTML = 'overlimit';
+    console.log(numberInput);
+    //let num = ('0000000000'+ numberInput).slice(-10).match(/^(\d{1})(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    let num = ('0000000' + numberInput).slice(-7).match(/^(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
+    console.log(num);
+    if (!num) return;
+
+    let outputText = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${tenth[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + ' million ' : '';
+
+    outputText += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${tenth[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + 'hundred ' : '';
+    outputText += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${tenth[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + ' thousand ' : '';
+    outputText += num[4] != 0 ? (oneToTwenty[Number(num[4])] || `${tenth[num[4][0]]} ${oneToTwenty[num[4][1]]}`) + 'hundred ' : '';
+    outputText += num[5] != 0 ? (oneToTwenty[Number(num[5])] || `${tenth[num[5][0]]} ${oneToTwenty[num[5][1]]} `) : '';
+    return outputText + "Rupees only";
+  }
 
   const [form] = Form.useForm();
 
@@ -100,19 +127,14 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_live_7vaMGLDIj9nq9b",
+         key: "rzp_live_7vaMGLDIj9nq9b",
         currency: "INR",
-        amount: parseInt(currPrice * 100),
+        amount: parseInt(50 * 100),
         name: "Content Concepts",
-        description: "Adding value to the lives",
+        description: "Providing Perfect Editing...",
         handler: async function (response) {
           if (response.razorpay_payment_id) {
-            setRazorSuccess(true)
-            message.success({
-              content: 'Success! Your payment was successful!',
-              className: 'messageCont',
-              icon: <SmileOutlined />
-            });
+            invoiceCreateFun();
           } else {
             setRazorSuccess(false)
             message.error({
@@ -190,7 +212,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       data.append("requirement", values.requirement);
     }
 
-    var url = "https://script.google.com/macros/s/AKfycbwTiXqbdqSOqDAetXv-ImpnJ3W7A9R874oNuViALZ-GNdemyp_tHmRRRTXNIp647JmukQ/exec";
+    var url = "https://script.google.com/macros/s/AKfycbx_ATFhUe7Pi7aDenZZPeUwOHZESXfgYGSnL2U3unB7s--68j5h_ivpe4b1daBzh-6D/exec";
 
     await fetch(url, {
       method: 'POST',
@@ -208,7 +230,6 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   };
 
   const handelCancel = () => {
-    // navigate("/")
     setSuccess(false);
     setLoading(false);
   }
@@ -243,9 +264,47 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   const signnn = () => {
     setErrors(validation())
   }
-
+  // AntD loader
   const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'white', marginLeft: `15px` }} spin />;
-
+  // Date check function
+  var currentDate = new Date();
+  const CurrentDayNumber = currentDate.getDate();
+  const currentYear = currentDate.getFullYear();
+  const CurrentMonthName = currentDate.toLocaleString("default", { month: "long" });
+  // Invoice creation function
+  const invoiceCreateFun = () => {
+    const bodyData = {
+      "name": name || '',
+      "toEmail": email || '',
+      "balance_due": "0.00s",
+      "invoice_date": CurrentDayNumber + ' ' + CurrentMonthName + ',' + currentYear,
+      "bill_to": name || '',
+      "designation": designation,
+      "address_to": address,
+      "delivery_date": dayNumber + ' ' + monthName + ',' + year,
+      "heading": category || '',
+      "wordcount": wordcount || '',
+      "rate": priceRate || '',
+      "amount": currencyPrize || '',
+      "total_in_words": doConvert(MainPrize)
+    }
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bodyData)
+    };
+    fetch('http://web1.fidisys.com/api/v1/pdf/create', requestOptions)
+      .then(response => response.json())
+      .then(_data => {
+        message.success({
+          content: 'Success! Your payment was successful!',
+          className: 'messageCont',
+          icon: <SmileOutlined />
+        });
+        handelCancel();
+        setRazorSuccess(true);
+      })
+  }
 
   return (
     <>
@@ -307,6 +366,36 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
               </Form.Item>
             </div>
           </Form.Item>
+
+          {/* Designation, Address */}
+          <Form.Item
+            style={{
+              marginBottom: 0,
+            }}
+            className="inputGroupBlock"
+          >
+            <div className="inlineInput">
+              <label className="formLabel" htmlFor="category">Designation</label>
+              <Form.Item
+                name='designation'
+                value={designation}
+                onChange={e => setDesignation(e.target.value)}
+              >
+                <Input placeholder="Designation" />
+              </Form.Item>
+            </div>
+            <div className="inlineInput emailInput">
+              <label className="formLabel" htmlFor="category">Address</label>
+              <Form.Item
+                name='address'
+                value={address}
+                onChange={e => setAddress(e.target.value)}
+              >
+                <Input placeholder="Address" />
+              </Form.Item>
+            </div>
+          </Form.Item>
+
           <div>
             <label className="formLabel" htmlFor="languageCategory">Select English Version</label>
             <Form.Item
@@ -404,7 +493,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
                   description: `Word Count:  ${wordcount}`,
                   price: currPrice
                 }}
-                  handelCancel={handelCancel}
+                  invoiceCreate={invoiceCreateFun}
                 />
               }
             </div>
@@ -415,4 +504,4 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   )
 }
 
-export default GetQuote
+export default GetQuote;

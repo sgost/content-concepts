@@ -603,6 +603,9 @@ export const BreadCrumps = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  .less_arrow {
+    width: 15px;
+  }
   .active {
     font-weight: bold;
     color: #1976d2;

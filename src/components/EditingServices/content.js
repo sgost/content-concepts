@@ -14,13 +14,14 @@ import {
   FeatureLinksContainer
 } from './styles';
 // import nib from "../../images/nib.svg";
+import less_arrow from "../../images/bread_crump_arrow.svg";
 
 const MenuContent = ({ content, description, preview }) => {
 
   return (
     <Fragment>
       <BreadCrumps>
-        <p>Services</p> / <p className='active'>{content.title}</p>
+        <p>Services</p> <img src={less_arrow} className="less_arrow" alt="less_arrow" /> <p className='active'>{content.title}</p>
       </BreadCrumps>
       <SiderImage>
         <img src={content?.cardImage?.publicURL ? content?.cardImage?.publicURL : content?.cardImage} alt="card_preview_image" className="service_banner_image" />
