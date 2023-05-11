@@ -39,7 +39,8 @@ const PopoverContent = props => {
 
   useEffect(() => {
     newArrFun();
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   const sortArrFun = (type) => {
@@ -51,23 +52,6 @@ const PopoverContent = props => {
   return (
     <Fragment>
       <SitemapContainer>
-        {/* {
-          content && content.map(dataItem =>
-            <SitemapList key={dataItem.id}>
-              {
-                dataItem.link ?
-                  <h5><Link to={dataItem.link} key={dataItem.id} onClick={props.onClick}>{dataItem.title}</Link></h5>
-                  : <h5>{dataItem.title}</h5>
-              }
-              {
-                dataItem.sitemap && dataItem.sitemap.map(sitemap =>
-                  <Link to={sitemap.link} key={sitemap.id} onClick={props.onClick} className="linkItem">{sitemap.title}</Link>
-                )
-              }
-            </SitemapList>
-          )
-        } */}
-
         <SitemapList>
           <h5>Academic Editing</h5>
           {sortArrFun("Academic Editing").map((dataItem) =>

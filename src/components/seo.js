@@ -76,7 +76,10 @@ function SEO({ description, lang, meta, title, keywords }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+      <script src="https://www.paypal.com/sdk/js?client-id=AR_91GIac11DOZex5XHw9vYSjGmHPXTM3LbhIX0bbPShcUHlgTdwcT7jPgWdQt-ocJR67nXXOYDwtxSz&currency=USD"></script>
+    </Helmet>
   )
 }
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import * as palette from '../../styles/variables';
+import styled from "styled-components"
+import * as palette from "../../styles/variables"
 
 export const BlogContainer = styled.div`
   max-width: 700px;
@@ -7,7 +7,7 @@ export const BlogContainer = styled.div`
   @media (max-width: 768px) {
     padding: 24px;
   }
-`;
+`
 
 export const AuthorInfo = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ export const AuthorInfo = styled.div`
       line-height: 20px;
     }
   }
-`;
+`
 
 export const BlogContent = styled.div`
   .blogTitle {
@@ -49,6 +49,28 @@ export const BlogContent = styled.div`
       font-size: 30px;
       line-height: 36px;
     }
+  }
+  table {
+    border: 1px solid #0000008f;
+    margin-bottom: 18px;
+  }
+  tr {
+    border: 1px solid #0000008f;
+  }
+  tbody {
+    tr:nth-child(2n + 1) {
+      background: #1c1cd121;
+    }
+  }
+  th {
+    padding: 3px;
+    border: 1px solid #0000008f;
+    background: #1976d2;
+    color: white;
+  }
+  td {
+    padding: 3px;
+    border: 1px solid #0000008f;
   }
   h1 {
     font-size: 28px;
@@ -88,7 +110,7 @@ export const BlogContent = styled.div`
     color: ${palette.PRIMARY_TXT_COLOR};
     text-decoration: underline;
   }
-`;
+`
 
 export const TagsList = styled.div`
   margin-top: 50px;
@@ -100,4 +122,4 @@ export const TagsList = styled.div`
   span:first-child {
     margin-left: 5px;
   }
-`;
+`

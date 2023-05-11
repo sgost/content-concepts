@@ -11,7 +11,8 @@ import f6 from "../../images/fimg6.svg"
 import close from "../../images/closereal.svg"
 import "./Tnc.css"
 
-export const FooterPreviewSection = ({ title, sitemapList }) => {
+export const FooterPreviewSection = ({ title, sitemapList, serviceData }) => {
+
   //pay
   const [open, setOpen] = React.useState(false)
   const [scroll, setScroll] = React.useState("paper")
@@ -46,11 +47,50 @@ export const FooterPreviewSection = ({ title, sitemapList }) => {
   const handleCloses = () => {
     setOpens(false)
   }
+
+
+  const [dataArr, setDataArr] = React.useState([]);
+
+
+  const newArrFun = () => {
+    const testArr = serviceData?.map((item) => ({
+      link: item?.node?.fields?.slug,
+      title: item?.node?.frontmatter?.navTitle || item?.node?.frontmatter?.title,
+      category: getNameFun(item?.node?.fields?.slug),
+      id: item?.node?.frontmatter?.navIndex || 0
+    }))?.filter((item) => item?.category !== undefined);
+    setDataArr(testArr);
+  }
+
+  const getNameFun = (slug) => {
+    if (slug.includes("academic_editing")) {
+      return "Academic Editing"
+    } else if (slug.includes("plagiarism_check")) {
+      return "Plagarism Check"
+    } else if (slug.includes("business_editing")) {
+      return "Business Editing"
+    } else if (slug.includes("publication_support")) {
+      return "Publication Support"
+    }
+  }
+
+
+  React.useEffect(() => {
+    newArrFun();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  const sortArrFun = (type) => {
+    return dataArr?.filter((itm) => itm?.category === type)?.sort((a, b) => {
+      return a.id - b.id;
+    })
+  }
   return (
     <FooterSection>
       <SitemapContainer>
         {sitemapList &&
-          sitemapList.map(dataItem => (
+          sitemapList.filter((item) => item?.title === "About Us").map(dataItem => (
             <SitemapList key={dataItem.id}>
               {dataItem.link ? (
                 <h5>
@@ -69,6 +109,30 @@ export const FooterPreviewSection = ({ title, sitemapList }) => {
                 ))}
             </SitemapList>
           ))}
+        <SitemapList>
+          <h5>Academic Editing</h5>
+          {sortArrFun("Academic Editing").map((dataItem) =>
+            <Link to={dataItem.link} key={dataItem.id} className="linkItem">{dataItem.title}</Link>
+          )}
+        </SitemapList>
+        <SitemapList>
+          <h5>Plagarism Check</h5>
+          {sortArrFun("Plagarism Check").map((dataItem) =>
+            <Link to={dataItem.link} key={dataItem.id} className="linkItem">{dataItem.title}</Link>
+          )}
+        </SitemapList>
+        <SitemapList>
+          <h5>Business Editing</h5>
+          {sortArrFun("Business Editing").map((dataItem) =>
+            <Link to={dataItem.link} key={dataItem.id} className="linkItem">{dataItem.title}</Link>
+          )}
+        </SitemapList>
+        <SitemapList>
+          <h5>Publication Support</h5>
+          {sortArrFun("Publication Support").map((dataItem) =>
+            <Link to={dataItem.link} key={dataItem.id} className="linkItem">{dataItem.title}</Link>
+          )}
+        </SitemapList>
       </SitemapContainer>
       <div id="footer_minidiv">
         <Link to="/pricing/#pays" id="footer_minidiv_block1">
@@ -422,6 +486,33 @@ const Footer = props => {
           }
         }
       }
+      serviceData: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(services)\\/.*\\\\.md$/"}}, sort: { fields: [frontmatter___date], order: DESC }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              navTitle
+              navIndex
+              excerpt
+              author
+              author_image {
+                childImageSharp {
+                  fluid {
+                    src
+                  }
+                }
+                extension
+                publicURL
+              }
+              date(formatString: "MMMM DD, YYYY")
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -433,6 +524,7 @@ const Footer = props => {
         <FooterPreviewSection
           title={content.title}
           sitemapList={content.sitemapList}
+          serviceData={data.serviceData?.edges}
         />
       )}
     </Fragment>

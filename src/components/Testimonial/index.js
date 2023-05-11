@@ -33,7 +33,7 @@ export const TestimonialPreviewSection = ({
 
 const Testimonial = props => {
 
-  const[content, setContent] = useState({});
+  const [content, setContent] = useState({});
 
   const data = useStaticQuery(graphql`
     query {
@@ -53,7 +53,7 @@ const Testimonial = props => {
   `);
 
   useEffect(() => {
-    if(data.file) {
+    if (data.file) {
       setContent(data.file.childMarkdownRemark.frontmatter);
     }
   }, [data.file]);

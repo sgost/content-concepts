@@ -17,7 +17,7 @@ export const FAQPreviewSection = ({
   const { Panel } = Collapse;
 
   return (
-    <FAQContainer style={{ background: path === 'home' && '#fff'}}>
+    <FAQContainer style={{ background: path === 'home' && '#fff' }}>
       <SectionHeading>
         <h2>{title}</h2>
       </SectionHeading>
@@ -38,7 +38,7 @@ export const FAQPreviewSection = ({
                 }
                 key={item.id}
               >
-                <p>{item.answer}</p>
+                <p dangerouslySetInnerHTML={{ __html: item.answer }} />
               </Panel>
             )
           }
@@ -50,7 +50,7 @@ export const FAQPreviewSection = ({
 
 const FAQ = props => {
 
-  const[content, setContent] = useState({});
+  const [content, setContent] = useState({});
 
   const data = useStaticQuery(graphql`
     query {
@@ -70,7 +70,7 @@ const FAQ = props => {
   `);
 
   useEffect(() => {
-    if(data.file) {
+    if (data.file) {
       setContent(data.file.childMarkdownRemark.frontmatter);
     }
   }, [data.file]);
