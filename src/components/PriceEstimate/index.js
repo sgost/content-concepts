@@ -36,6 +36,7 @@ const PriceEstimate = () => {
         ]
     const [pay, setpay] = useState(null);
     const [toggleState, setToggleState] = useState("");
+    const [editingType, setEditingType] = useState(1);
     const [currency] = useState(checkCurrency);
     const [priceRate, setPriceRate] = useState('');
 
@@ -47,7 +48,8 @@ const PriceEstimate = () => {
 
     const UpdateTime = !finalpay ? "" : finalpay <= 2000 ? 48 : finalpay === 2001 || finalpay <= 4000 ? 72 : finalpay === 4001 || finalpay <= 6000 ? 72 : finalpay === 6001 || finalpay <= 10000 ? 96 : finalpay >= 10001 ? 120 : "";
     var d = new Date();
-    d.setHours(UpdateTime)
+    const timeDoubleVar = editingType === 3 ? UpdateTime * 2 : UpdateTime;
+    d.setHours(timeDoubleVar)
     const dayNumber = d.getDate();
     const year = d.getFullYear();
     const dayName = d.toLocaleString("default", { weekday: "long" });
@@ -95,7 +97,7 @@ const PriceEstimate = () => {
                                                         ? "pay_block2_container1 pay_block2_container2"
                                                         : "pay_block2_container1"
                                                 }
-                                                onClick={() => { toggleTab(i); setPriceRate(currency === 4 ? paymap.rupees : paymap.dollers) }}
+                                                onClick={() => { toggleTab(i); setEditingType(paymap?.id); setPriceRate(currency === 4 ? paymap.rupees : paymap.dollers) }}
                                             ><div id="radio1"><div id="radio2"></div></div>{paymap.title}</button>
                                         </>
                                     )}
