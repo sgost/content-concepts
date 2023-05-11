@@ -61,10 +61,6 @@ export const MenuContainer = styled.div`
 `
 
 export const HeadingContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  flex-wrap: wrap;
   h2 {
     font-size: 32px;
     line-height: 48px;

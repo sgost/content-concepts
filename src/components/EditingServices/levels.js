@@ -20,7 +20,7 @@ const EditingLevels = ({ content }) => {
         content &&
         <LevelsSection>
           <SectionHeading>
-            <h2>{content.title} <span> - {content.subHeading}</span></h2>
+            <h2>{content.title} <span>{content.subHeading}</span></h2>
           </SectionHeading>
           <LevelsListing>
             <List
