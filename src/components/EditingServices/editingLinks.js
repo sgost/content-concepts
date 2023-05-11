@@ -1,23 +1,48 @@
 import React from "react";
-import { EditingLinksPreview } from "./styles";
+import { Link } from "gatsby";
+import { Button } from 'antd'
+// import Marker from '../../images/tick_filled.svg';
+import {
+    EditingLinksPreview,
+    TypesContainer,
+    // FeaturesListContainer,
+    // FeatureSecList,
+    RefundSection,
+    ButtonContainer,
+} from "./styles";
 
 
-const EditingLinks = ({ content }) => {
+const EditingLinks = ({ content, description, preview }) => {
     return (
         <EditingLinksPreview>
-            {content?.map((item) => {
-                return (
-                    <div className="editing_links_main" key={item?.title}>
-                        <h1 className="editing_links_title">{item?.title}</h1>
-                        <p className="editing_links_desc">{item?.description}</p>
-                        {item?.links?.map((itm) => {
-                            return (
-                                <p className="editing_links_points" key={itm?.title}>{itm?.title}: <a href={itm?.titleLink} className="links_editing">{itm?.titleLinkDescription}</a> </p>
-                            )
-                        })}
-                    </div>
-                )
-            })}
+            <TypesContainer>
+                {
+                    preview ? <div>{description}</div> : <div dangerouslySetInnerHTML={{ __html: description }} />
+                }
+            </TypesContainer>
+            {/* <FeaturesListContainer>
+                {
+                    content.features && content.features.map(dataItem =>
+                        <FeatureSecList key={dataItem.id}>
+                            <img src={Marker} alt="features" />
+                            <p>
+                                {
+                                    dataItem.link ? <Link to={dataItem.link}>{dataItem.title}</Link> : dataItem.title
+                                }
+                            </p>
+                        </FeatureSecList>
+                    )
+                }
+            </FeaturesListContainer> */}
+            <RefundSection>
+                <div dangerouslySetInnerHTML={{ __html: content.message }} />
+            </RefundSection>
+
+            <ButtonContainer>
+                <Link to="/pricing/"><Button type="primary">{content?.btnTxt?.quote ? content?.btnTxt?.quote : 'Get Quote'}</Button></Link>
+                <Button onClick={() => window.location.href = "#editingSample"}>{content?.btnTxt?.sample ? content?.btnTxt?.sample : 'Check Sample'}</Button>
+                <Button onClick={() => window.location.href = "#editingProcess"}>{content?.btnTxt?.editing ? content?.btnTxt?.editing : 'Editing Process'}</Button>
+            </ButtonContainer>
         </EditingLinksPreview>
     )
 }

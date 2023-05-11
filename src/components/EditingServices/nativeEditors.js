@@ -15,7 +15,7 @@ const NativeEditorsSec = ({ content, title }) => {
                             </div>
                             <h1 className="user_card_title">{itm?.name}</h1>
                             <p className="user_card_description">{itm?.designation}</p>
-                            <p className="card_desc_main">{itm?.description}</p>
+                            <p className="card_desc_main" dangerouslySetInnerHTML={{ __html: itm?.description }} />
                         </div>
                     )
                 })}

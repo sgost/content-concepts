@@ -3,7 +3,8 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Pricing from "../components/Pricing"
-import Customers from "../components/Customers"
+// import Customers from "../components/Customers"
+import GoogleReviews from "../components/GoogleReviews"
 import Contact from "../components/Contact"
 import PriceEstimate from "../components/PriceEstimate"
 import QualityAssurance from "../components/QualityAssurance"
@@ -21,7 +22,8 @@ const PricingPage = ({ data }) => {
       <PriceEstimate />
       <Pricing content={pricingContent} />
       <QualityAssurance />
-      <Customers />
+      {/* <Customers /> */}
+      <GoogleReviews color="#F5FBFF" />
       <Contact />
       <FAQ />
     </Fragment>

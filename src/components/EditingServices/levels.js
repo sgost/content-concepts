@@ -20,7 +20,7 @@ const EditingLevels = ({ content }) => {
         content &&
         <LevelsSection>
           <SectionHeading>
-            <h2>{content.title} <span> - {content.subHeading}</span></h2>
+            <h2>{content.title} <span>{content.subHeading}</span></h2>
           </SectionHeading>
           <LevelsListing>
             <List
@@ -30,7 +30,7 @@ const EditingLevels = ({ content }) => {
                   <Col xs={9} sm={9} md={9} lg={10} xl={10}></Col>
                   {
                     content.levelTypes && content.levelTypes.map(level =>
-                      <Col xs={5} sm={5} md={4} lg={4} xl={4} key={level.id} className="cardCol" style={{background: level.themeColor}}>
+                      <Col xs={5} sm={5} md={4} lg={4} xl={4} key={level.id} className="cardCol" style={{ background: level.themeColor }}>
                         <span>{level.title}</span>
                       </Col>
                     )

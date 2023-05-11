@@ -3,7 +3,8 @@ import { message } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const PaypalGateWayBtn = ({ product, handelCancel }) => {
+const PaypalGateWayBtn = ({ product, handelCancel, invoiceCreate }) => {
+
 
     return (
         <PayPalScriptProvider>
@@ -27,7 +28,7 @@ const PaypalGateWayBtn = ({ product, handelCancel }) => {
                         className: 'messageCont',
                         icon: <SmileOutlined />
                     });
-                    handelCancel();
+                    invoiceCreate();
                 }}
                 onErr={(err) => {
                     message.error({

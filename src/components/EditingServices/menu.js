@@ -1,31 +1,26 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
-import { Layout, Button } from "antd"
-// import ConnectPreviewSection from "../ConnectTeams";
-// import EditingLabel from './editingLabel';
+import { Layout } from "antd"
+import EditingLabel from './editingLabel';
+import GoogleReviews from "../GoogleReviews/index";
+import EditingCardLinks from "./editingCardLinks";
+import ConnectPreviewSection from "../ConnectTeams";
 import MenuContent from './content';
-// import GoogleReviews from "../GoogleReviews/index";
 import EditingLevels from './levels';
 import EditingSamples from './samples';
 import Highlights from './highlights';
+import NativeEditorsSec from "./nativeEditors";
 import { ProcessPreviewSection } from "../Process"
 import {
   MenuContainer,
-  ServiceCard,
-  PriceSection,
-  TagContent,
-  DescSection,
-  ButtonSection
 } from './styles';
 
-const { Content, Sider } = Layout;
+const { Content } = Layout;
 
 const MenuSection = props => {
 
   const data = props.content;
 
-  const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
+  // const getCountry = Intl.DateTimeFormat().resolvedOptions().timeZone;
   return (
     <Fragment>
       <MenuContainer>
@@ -33,54 +28,26 @@ const MenuSection = props => {
           <Content>
             <MenuContent content={data} description={props.description} preview={props.preview} />
           </Content>
-          <Sider>
-            {
-              data.priceCard &&
-              <ServiceCard>
-                <h3>{data.title}</h3>
-                <PriceSection>
-                  <span className="startingText">{data.priceCard.pricing.title}</span>
-                  {
-                    data.priceCard.pricing.price &&
-                    <div className="priceSec">
-                      {getCountry === "Asia/Calcutta" ?
-                        data.priceCard.pricing.price.inr && <span className="priceValue" dangerouslySetInnerHTML={{ __html: data.priceCard.pricing.price.inr }} />
-                        :
-                        data.priceCard.pricing.price.usd && <span className="priceValue" dangerouslySetInnerHTML={{ __html: data.priceCard.pricing.price.usd }} />
-                      }
-                    </div>
-                  }
-                </PriceSection>
-                {
-                  data.priceCard.tagContent &&
-                  <TagContent>
-                    <p>
-                      {data.priceCard.tagContent}
-                    </p>
-                  </TagContent>
-                }
-                <DescSection>
-                  <p>{data.priceCard.content}</p>
-                </DescSection>
-                <ButtonSection>
-                  <Button type="primary">
-                    <Link to="/pricing/">Get Started</Link>
-                  </Button>
-                </ButtonSection>
-              </ServiceCard>
-            }
-          </Sider>
+          <img src={data?.cardImage?.publicURL ? data?.cardImage?.publicURL : data?.cardImage} alt="card_preview_image" className="blog_image" />
         </Layout>
       </MenuContainer>
-      {/* <ConnectPreviewSection />
-      <EditingLabel />
-      <GoogleReviews /> */}
-      <EditingLevels content={data.editingLevels} />
-      <EditingSamples content={data.editingSample} />
-      <Highlights content={data.editingHighlights} />
+      {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
+      {data?.flashBannerTop?.quoteToggle && <EditingLabel content={data?.flashBannerTop} />}
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }
+      {data?.editingHighlights?.toggle && <Highlights content={data.editingHighlights} />}
+      <GoogleReviews />
+      {data?.flashBannerCenter?.quoteToggle && <EditingLabel content={data?.flashBannerCenter} />}
+      {data?.editingLevels?.toggle && <EditingLevels content={data?.editingLevels} />}
+      {data?.connectToolsToggle && <ConnectPreviewSection
+        title={data?.connectToolsTitle}
+        description={data?.connectToolsDec}
+        content={data?.connectTools}
+      />}
+      {data?.editingCard && <EditingCardLinks content={data} description={props.description} preview={props.preview} />}
+      {data?.flashBannerBottom?.quoteToggle && <EditingLabel content={data?.flashBannerBottom} />}
+      {data?.editingSample?.toggle && <EditingSamples content={data?.editingSample} />}
     </Fragment>
   )
 }
