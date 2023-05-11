@@ -129,7 +129,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       const options = {
         key: "rzp_live_MTWtqGzfzQN1mn",
         currency: "INR",
-        amount: parseInt(50 * 100),
+        amount: parseInt(currPrice * 100),
         name: "Content Concepts",
         description: "Providing Perfect Editing...",
         handler: async function (response) {
@@ -276,7 +276,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     const bodyData = {
       "name": name || '',
       "toEmail": email || '',
-      "balance_due": "0.00s",
+      "balance_due": "0.00",
       "invoice_date": CurrentDayNumber + ' ' + CurrentMonthName + ',' + currentYear,
       "bill_to": name || '',
       "designation": designation,
@@ -285,7 +285,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       "heading": category || '',
       "wordcount": wordcount || '',
       "rate": priceRate || '',
-      "amount": currencyPrize || '',
+      "amount": currPrice || '',
       "total_in_words": doConvert(MainPrize)
     }
     const requestOptions = {
