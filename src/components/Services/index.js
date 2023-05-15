@@ -30,7 +30,7 @@ export const HomeServicesSection = ({
                   <h3>{dataItem.title}</h3>
                   <p>{dataItem.description}</p>
                   <Button type="primary">
-                    <Link to={dataItem.link}>Know More</Link>
+                    <Link to={dataItem.link}>{dataItem?.btntext}</Link>
                   </Button>
                 </Col>
               )
@@ -60,6 +60,7 @@ const Services = props => {
                 publicURL
               }
               link
+              btntext
             }
           }
         }
