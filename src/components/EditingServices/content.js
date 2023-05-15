@@ -31,7 +31,7 @@ const MenuContent = ({ content, description, preview }) => {
           <HeadingContainer>
             <h2>{content.title}</h2>
             {
-              content.highlight && <span>({content.highlight})</span>
+              content.highlight && <span>{content.highlight}</span>
             }
           </HeadingContainer>
           {/* <ButtonContainer>
