@@ -62,13 +62,14 @@ export const MenuContainer = styled.div`
 
 export const HeadingContainer = styled.div`
   h2 {
-    font-size: 32px;
+    font-size: 39px;
     line-height: 48px;
     margin-right: 15px;
   }
   span {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 22px;
+    font-weight: 500;
     line-height: 40px;
     color: ${palette.BUTTON_PRIMARY};
   }

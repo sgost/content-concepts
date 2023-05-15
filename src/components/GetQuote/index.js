@@ -127,7 +127,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_live_MTWtqGzfzQN1mn",
+        key: "rzp_test_yG7EQaRL8NqDGs",
         currency: "INR",
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
@@ -212,7 +212,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       data.append("requirement", values.requirement);
     }
 
-    let url = "https://script.google.com/macros/s/AKfycbypn2M8KEHbzADN5Q9uRTL1RtM9p13jo4Dg_rO0Un3Gzm9zEq_wX0MKSaikZxxqphmS/exec";
+    let url = "https://script.google.com/macros/s/AKfycbx6N3cF5e9DDDt9m_wKJtbG17bxbHuj-aqdqZK10gyp-YnPV8WH4N9mTowlTrWtVG3k/exec";
 
     await fetch(url, {
       method: 'POST',
@@ -375,13 +375,13 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
             className="inputGroupBlock"
           >
             <div className="inlineInput">
-              <label className="formLabel" htmlFor="category">Designation</label>
+              <label className="formLabel" htmlFor="category">Organization</label>
               <Form.Item
                 name='designation'
                 value={designation}
                 onChange={e => setDesignation(e.target.value)}
               >
-                <Input placeholder="Designation" />
+                <Input placeholder="Organization" />
               </Form.Item>
             </div>
             <div className="inlineInput emailInput">
