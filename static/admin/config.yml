@@ -1,7 +1,7 @@
 backend:
   name: github
+  repo: sgost/contentconcepts-data
   # repo: fidisys/contentconcepts-data
-    repo: sgost/contentconcepts-data
 
 publish_mode: editorial_workflow
 
