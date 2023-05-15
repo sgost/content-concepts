@@ -326,8 +326,8 @@ collections:
         name: flashBannerTop
         widget: object
         fields:
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
+          - { name: quoteLink, label: Link, default: www.sample.com, required: false }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Service Process
@@ -393,8 +393,8 @@ collections:
         name: flashBannerCenter
         widget: object
         fields:
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
+          - { name: quoteLink, label: Link, default: www.sample.com, required: false }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Levels
@@ -460,7 +460,7 @@ collections:
           name: connectToolsToggle,
           label: Toggle to show connect tools container,
           default: show,
-          reuired: false,
+          required: false,
         }
       - label: Connect Tools Container
         name: connectTools
@@ -525,8 +525,8 @@ collections:
         name: flashBannerBottom
         widget: object
         fields:
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
+          - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
+          - { name: quoteLink, label: Link, default: www.sample.com, required: false }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Sample
