@@ -31,6 +31,8 @@ const PopoverContent = props => {
       return "Plagarism Check"
     } else if (slug.includes("business_editing")) {
       return "Business Editing"
+    } else if (slug.includes("content_writing")) {
+      return "Content Writing"
     }
   }
 
@@ -65,6 +67,12 @@ const PopoverContent = props => {
         <SitemapList>
           <h5>Business Editing</h5>
           {sortArrFun("Business Editing").map((dataItem) =>
+            <Link to={dataItem.link} key={dataItem.id} onClick={props.onClick} className="linkItem">{dataItem.title}</Link>
+          )}
+        </SitemapList>
+        <SitemapList>
+          <h5>Content Writing</h5>
+          {sortArrFun("Content Writing").map((dataItem) =>
             <Link to={dataItem.link} key={dataItem.id} onClick={props.onClick} className="linkItem">{dataItem.title}</Link>
           )}
         </SitemapList>
