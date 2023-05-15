@@ -450,11 +450,13 @@ collections:
           name: connectToolsTitle,
           label: Connect Tools Section Title,
           default: Connect Tools Section Title,
+          required: false,
         }
       - {
           name: connectToolsDec,
           label: Connect Tools Section Description,
           default: Connect Tools Section Description,
+          required: false,
         }
       - {
           name: connectToolsToggle,
