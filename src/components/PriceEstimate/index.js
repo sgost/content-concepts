@@ -183,6 +183,7 @@ const PriceEstimate = () => {
                     dayName={dayName}
                     monthName={monthName}
                     priceRate={priceRate}
+                    cancelQuoteFormFun={handelCancel}
                 />
             </Modal>
         </>
