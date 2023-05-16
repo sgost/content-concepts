@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Form, message, Input, Radio, Row, Col, Upload, Button, Modal, Spin } from 'antd';
 import { SmileOutlined, UploadOutlined, LoadingOutlined } from '@ant-design/icons';
-import { QuoteFormSection, Quotepop } from './styles';
+import { QuoteFormSection, Quotepop, SuccessPopup, LoaderPopup } from './styles';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import razorpayLogo from "../../images/razorpayLogo.png"
@@ -11,7 +11,7 @@ import logoSVG from "../../images/logo.svg"
 import PaypalGateWayBtn from "../PaypalBtn/index";
 
 
-const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, dayName, monthName, priceRate }) => {
+const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, dayName, monthName, priceRate, cancelQuoteFormFun }) => {
 
   const tailLayout = {
     wrapperCol: { offset: 5, span: 16 },
@@ -27,6 +27,9 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   const [errors, setErrors] = useState("");
   const [mobNo, setMobNo] = useState();
   const [showUpload, setShowUpload] = useState(true);
+  // Newly added
+  const [showCustomPopup, setShowCustomPopup] = useState(false);
+  const [customLoader, setCustomLoader] = useState(false);
 
   // convert amount in text formate
   const doConvert = (value) => {
@@ -122,12 +125,13 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
   // function for razorpayment gateway
   const payRazorpay = async () => {
+    setCustomLoader(true);
     const razorpayRes = await loadscript("https://checkout.razorpay.com/v1/checkout.js")
     if (!razorpayRes) {
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_live_MTWtqGzfzQN1mn",
+        key: "rzp_test_yG7EQaRL8NqDGs",
         currency: "INR",
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
@@ -212,7 +216,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       data.append("requirement", values.requirement);
     }
 
-    let url = "https://script.google.com/macros/s/AKfycby-M5Xv9AUNOAbXqJpPhww7NoDpp6GGJlm2HaOj6_RxP-6QjUwlOupl9H5wS0jh7eaj3g/exec";
+    let url = "https://script.google.com/macros/s/AKfycbxDIo9ge6KXgHx-uWn0WL2tqg-aVIAi5t3NU4IoyPFQx7YSofT17ucHvlob8mr5QeR6/exec";
 
     await fetch(url, {
       method: 'POST',
@@ -229,10 +233,14 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     setShowUpload(true);
   };
 
+  // Handle cancel function
   const handelCancel = () => {
     setSuccess(false);
     setLoading(false);
+    cancelQuoteFormFun();
+    setShowCustomPopup(false);
   }
+
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: {eq: "quoteCategory.md"}) {
@@ -266,6 +274,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   }
   // AntD loader
   const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'white', marginLeft: `15px` }} spin />;
+  const antIconBlue = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   // Date check function
   var currentDate = new Date();
   const CurrentDayNumber = currentDate.getDate();
@@ -296,13 +305,9 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     fetch('http://web1.fidisys.com/api/v1/pdf/create', requestOptions)
       .then(response => response.json())
       .then(_data => {
-        message.success({
-          content: 'Success! Your payment was successful!',
-          className: 'messageCont',
-          icon: <SmileOutlined />
-        });
-        handelCancel();
+        setShowCustomPopup(true);
         setRazorSuccess(true);
+        setCustomLoader(false);
       })
   }
 
@@ -467,38 +472,56 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         onCancel={handelCancel}
         footer={null}
       >
-        <Quotepop id="Quotepop">
-          <div id="pop_conteiner">
-            <img src={logoSVG} alt="img" style={{ width: `40px`, height: `40px`, marginBottom: `20px` }} />
-            <p>{razorSuccess ? "Your payment was successful!" : "Document submitted. Please proceed to make payment"}</p>
-            <p id="Quotepop_t2" style={{ color: `#1E88E5` }}>Word Count :  {wordcount}</p>
-            <p id="Quotepop_t2" style={{ color: `#32cd32` }}>Total Price to Pay :  {currencyPrize}</p>
-            <p id="Quotepop_t1" >Expected Delivery Date</p>
-            <p id="Quotepop_date">{dayName}, {monthName} {dayNumber}, {year}</p>
-          </div>
-          {razorSuccess ? <Button onClick={handelCancel}>Back to Home</Button>
-            :
-            <div className="button_container">
-              {razorSuccess ?
-                <p id="Quotepop_t3">Your payment was successful!, you will receive a confirmation email.</p>
-                :
-                <p id="Quotepop_t3">Proceed to pay via {currency === 4 ? "Razorpay" : "PayPal"}</p>
-              }
-              {currency === 4 ?
-                <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={payRazorpay}>
-                  Razorpay
-                </Button>
-                :
-                <PaypalGateWayBtn product={{
-                  description: `Word Count:  ${wordcount}`,
-                  price: currPrice
-                }}
-                  invoiceCreate={invoiceCreateFun}
-                />
-              }
+        {customLoader ?
+          <LoaderPopup>
+            <Spin indicator={antIconBlue} />
+          </LoaderPopup>
+          :
+          <Quotepop id="Quotepop">
+            <div id="pop_conteiner">
+              <img src={logoSVG} alt="img" style={{ width: `40px`, height: `40px`, marginBottom: `20px` }} />
+              <p>{razorSuccess ? "Your payment was successful!" : "Document submitted. Please proceed to make payment"}</p>
+              <p id="Quotepop_t2" style={{ color: `#1E88E5` }}>Word Count :  {wordcount}</p>
+              <p id="Quotepop_t2" style={{ color: `#32cd32` }}>Total Price to Pay :  {currencyPrize}</p>
+              <p id="Quotepop_t1" >Expected Delivery Date</p>
+              <p id="Quotepop_date">{dayName}, {monthName} {dayNumber}, {year}</p>
             </div>
-          }
-        </Quotepop>
+            {razorSuccess ? <Button onClick={handelCancel}>Back to Home</Button>
+              :
+              <div className="button_container">
+                {razorSuccess ?
+                  <p id="Quotepop_t3">Your payment was successful!, you will receive a confirmation email.</p>
+                  :
+                  <p id="Quotepop_t3">Proceed to pay via {currency === 4 ? "Razorpay" : "PayPal"}</p>
+                }
+                {currency === 4 ?
+                  <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={payRazorpay}>
+                    Razorpay
+                  </Button>
+                  :
+                  <PaypalGateWayBtn product={{
+                    description: `Word Count:  ${wordcount}`,
+                    price: currPrice
+                  }}
+                    invoiceCreate={invoiceCreateFun}
+                  />
+                }
+              </div>
+            }
+          </Quotepop>
+        }
+        {showCustomPopup &&
+        <SuccessPopup>
+          <div className="success_popup">
+            <SmileOutlined className="SmileOutlined" />
+            <div className="success_text">
+              <p className="popup_title">Your payment is successful!</p>
+              <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
+              <button className="conf_btn" onClick={() => handelCancel()}>Conform</button>
+            </div>
+          </div>
+        </SuccessPopup>
+      }
       </Modal>
     </>
   )

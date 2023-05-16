@@ -286,3 +286,66 @@ color: #333333;
 margin-top:8px;
 }
 `;
+
+export const LoaderPopup = styled.div`
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const SuccessPopup = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0000006b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+.success_popup {
+  display: flex;
+  background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px 0 rgba(0,0,0,.08), 0 3px 6px -4px rgba(0,0,0,.12), 0 9px 28px 8px rgba(0,0,0,.05);
+    pointer-events: auto;
+    padding: 29px 24px;
+    max-width: 500px;
+    .SmileOutlined {
+      font-size: 40px;
+      color: green;
+      margin-right: 10px;
+    }
+    .success_text {
+      display: flex;
+      flex-direction: column;
+    
+    .popup_title {
+      color: rgba(0,0,0,.88);
+      font-weight: 600;
+      font-size: 22px;
+    }
+    .popup_description {
+      font-size: 18px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    .conf_btn {
+      background: #0e63c1;
+      border: none;
+      outline: none;
+      margin: 10px 0 0 auto;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      box-shadow: 0 2px 0 rgba(5,145,255,.1);
+      padding: 7px 20px;
+      cursor: pointer;
+    }
+}
+}
+`
