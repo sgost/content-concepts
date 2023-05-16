@@ -127,7 +127,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_test_yG7EQaRL8NqDGs",
+        key: "rzp_live_MTWtqGzfzQN1mn",
         currency: "INR",
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
