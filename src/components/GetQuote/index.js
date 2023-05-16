@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, navigate } from "gatsby"
 import { Form, message, Input, Radio, Row, Col, Upload, Button, Modal, Spin } from 'antd';
 import { SmileOutlined, UploadOutlined, LoadingOutlined } from '@ant-design/icons';
 import { QuoteFormSection, Quotepop, SuccessPopup, LoaderPopup } from './styles';
@@ -30,6 +30,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   // Newly added
   const [showCustomPopup, setShowCustomPopup] = useState(false);
   const [customLoader, setCustomLoader] = useState(false);
+  const [fileObj, setFileObj] = useState({"file": "", "name": ""})
 
   // convert amount in text formate
   const doConvert = (value) => {
@@ -59,6 +60,8 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   const [form] = Form.useForm();
 
   const { TextArea } = Input;
+
+  let fileData = new FormData();
 
   const normFile = e => {
     if (Array.isArray(e)) {
@@ -91,6 +94,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
+        setFileObj({...fileObj,"file": e.target.result, "name": file?.name})
         file.base64 = e.target.result;
         resolve(e.target.result);
       };
@@ -131,7 +135,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_test_yG7EQaRL8NqDGs",
+        key: "rzp_live_MTWtqGzfzQN1mn",
         currency: "INR",
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
@@ -168,59 +172,59 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     setDisabled(true);
     setLoading(true);
 
-    const data = new FormData();
-
-    data.append("name", values.name);
-    data.append("email", values.email);
+    fileData.append("name", values.name);
+    fileData.append("email", values.email);
 
     if (values.phone === undefined) {
-      data.append("phone", '-');
+      fileData.append("phone", '-');
     } else {
-      data.append("phone", values.phone);
+      fileData.append("phone", values.phone);
     }
 
     if (category === undefined) {
-      data.append("category", '-');
+      fileData.append("category", '-');
     } else {
-      data.append("category", category);
+      fileData.append("category", category);
     }
 
     if (values.languageCategory === undefined) {
-      data.append("languageCategory", '-');
+      fileData.append("languageCategory", '-');
     } else {
-      data.append("languageCategory", values.languageCategory);
+      fileData.append("languageCategory", values.languageCategory);
     }
-
+console.log("fileObj", fileObj)
     if (values.categoryFile !== undefined) {
-      data.append("file", values.categoryFile[0].base64)
-      data.append("filename", values.categoryFile[0].name);
+      fileData.append("file", fileObj?.file)
+      fileData.append("filename", fileObj?.name);
     } else {
-      data.append("filename", '-');
+      fileData.append("filename", '-');
     }
 
     if (wordcount === undefined) {
-      data.append("wordCount", '-');
+      fileData.append("wordCount", '-');
     } else {
-      data.append("wordCount", wordcount);
+      fileData.append("wordCount", wordcount);
     }
 
     if (MainPrize === undefined) {
-      data.append("prize", '-');
+      fileData.append("prize", '-');
     } else {
-      data.append("prize", MainPrize);
+      fileData.append("prize", MainPrize);
     }
 
     if (values.requirement === undefined) {
-      data.append("requirement", '-');
+      fileData.append("requirement", '-');
     } else {
-      data.append("requirement", values.requirement);
+      fileData.append("requirement", values.requirement);
     }
 
-    let url = "https://script.google.com/macros/s/AKfycbxDIo9ge6KXgHx-uWn0WL2tqg-aVIAi5t3NU4IoyPFQx7YSofT17ucHvlob8mr5QeR6/exec";
+    console.log("fileData",fileData)
+
+    let url = "https://script.google.com/macros/s/AKfycby21K0Dp5VcUVVcEIJVDAVmwqTz-okzQqqz0Dtj99pYR-E6eE433fLU_2wc7cXsmpYDBg/exec";
 
     await fetch(url, {
       method: 'POST',
-      body: data,
+      body: fileData,
       mode: 'no-cors',
     }).then(function (_response) {
       setSuccess(true);
@@ -235,6 +239,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
   // Handle cancel function
   const handelCancel = () => {
+    navigate("/pricing/");
     setSuccess(false);
     setLoading(false);
     cancelQuoteFormFun();
@@ -305,6 +310,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     fetch('http://web1.fidisys.com/api/v1/pdf/create', requestOptions)
       .then(response => response.json())
       .then(_data => {
+        form.resetFields();
         setShowCustomPopup(true);
         setRazorSuccess(true);
         setCustomLoader(false);

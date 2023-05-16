@@ -300,7 +300,7 @@ export const SuccessPopup = styled.div`
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #0000006b;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
