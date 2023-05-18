@@ -7,7 +7,7 @@ import MenuSection from "./menu"
 import { FAQPreviewSection } from "../FAQ"
 
 const EditingServices = ({ data }) => {
-  const pricingContent = data.pageData.childMarkdownRemark.frontmatter;
+  const pricingContent = data?.pageData?.childMarkdownRemark?.frontmatter;
   return (
     <Fragment>
       {data.markdownRemark.frontmatter.seo && (
