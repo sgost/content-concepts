@@ -13,6 +13,7 @@ import { ProcessPreviewSection } from "../Process"
 import {
   MenuContainer,
 } from './styles';
+import Pricing from "../../components/Pricing";
 
 const { Content } = Layout;
 
@@ -33,6 +34,7 @@ const MenuSection = props => {
       </MenuContainer>
       {data?.nativeEditorSecToggle && <NativeEditorsSec content={data?.editorSecCards} title={data?.editorSecTitle} />}
       {data?.flashBannerTop?.quoteToggle && <EditingLabel content={data?.flashBannerTop} />}
+      {data?.editingToggle && <Pricing content={props.pricingContent} />}
       {
         data.serviceProcess && <ProcessPreviewSection title={data.serviceProcess.title} process={data.serviceProcess.steps} />
       }

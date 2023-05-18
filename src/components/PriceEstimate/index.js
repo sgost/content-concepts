@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
     PriceEstimateMain,
     PriceEstimateContainer,
-    PriceEstimateContainerb1,
+    PriceEstimateContMain,
     PriceEstimateContainerb2
 } from './styles';
 import GetQuote from "../GetQuote/index";
@@ -67,13 +67,13 @@ const PriceEstimate = () => {
             <PriceEstimateMain>
                 <div id="PrizeEstimation">
                     <PriceEstimateContainer>
-                        <p id="map"><div className="round">1</div> Enter wordcount <img src={less_arrow} className="less_arrow" alt="less_arrow" /> <div className="round">2</div> Select Service <img src={less_arrow} className="less_arrow" alt="less_arrow" /><div className="round">3</div> Check pricing & upload</p>
-                        <PriceEstimateContainerb1>
+                        <PriceEstimateContMain>
                             <div id="slide_label">
                                 <h1>Calculate your editing fee</h1>
+                                <p id="map"><div className="round">1</div> Enter wordcount <img src={less_arrow} className="less_arrow" alt="less_arrow" /> <div className="round">2</div> Select Service <img src={less_arrow} className="less_arrow" alt="less_arrow" /><div className="round">3</div> Check pricing & upload</p>
                             </div>
                             <div id="slide_label">
-                                <label htmlFor="firstName">How many words do you want us to edit? (exclude References)</label>
+                                <label htmlFor="firstName"><div className="round">1</div>How many words do you want us to edit? (exclude References)</label>
                                 <div id="slider_input">
                                     <input type="text" id="peinput" value={finalpay}
                                         onChange={e => setpay(e.target.value)} max="100000" />
@@ -87,7 +87,7 @@ const PriceEstimate = () => {
                                 </div>
                             </div>
                             <div id="slide_label">
-                                <label htmlFor="firstName">Choose your service</label>
+                                <label htmlFor="firstName"><div className="round">2</div>Choose your service</label>
                                 <div id="slider_buttons">
                                     {array && array.map((paymap, i) =>
                                         <>
@@ -103,7 +103,7 @@ const PriceEstimate = () => {
                                     )}
                                 </div>
                             </div>
-                        </PriceEstimateContainerb1>
+                        </PriceEstimateContMain>
                         {
                             toggleState === "" ?
                                 <PriceEstimateContainerb2 >

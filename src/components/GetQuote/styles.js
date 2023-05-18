@@ -314,11 +314,11 @@ export const SuccessPopup = styled.div`
     box-shadow: 0 6px 16px 0 rgba(0,0,0,.08), 0 3px 6px -4px rgba(0,0,0,.12), 0 9px 28px 8px rgba(0,0,0,.05);
     pointer-events: auto;
     padding: 29px 24px;
-    max-width: 500px;
+    max-width: 653px;
     .SmileOutlined {
-      font-size: 40px;
+      font-size: 55px;
       color: green;
-      margin-right: 10px;
+      margin-right: 26px;
     }
     .success_text {
       display: flex;
@@ -327,11 +327,11 @@ export const SuccessPopup = styled.div`
     .popup_title {
       color: rgba(0,0,0,.88);
       font-weight: 600;
-      font-size: 22px;
+      font-size: 29px;
     }
     .popup_description {
       font-size: 18px;
-      margin-top: 15px;
+      margin-top: 18px;
       line-height: 1.5;
     }
     .conf_btn {

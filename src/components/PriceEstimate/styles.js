@@ -4,7 +4,7 @@ export const PriceEstimateMain = styled.div`
   width: 100%;
   height: fit-content;
   background: #f5fbff;
-  padding: 3vw 0 0 0;
+  padding: 0 0 0 0;
   @media (max-width: 750px) {
     background: white;
   }
@@ -29,14 +29,12 @@ export const PriceEstimateContainer = styled.div`
   }
   #map {
     display: flex;
-    position: absolute;
-    top: 2vw;
-    left: 4vw;
     font-weight: 500;
     font-size: 1.1vw;
     line-height: 1.72661870503597vw;
     color: #57697D;
     text-align: center;
+    margin-top: 1.5vw;
     .round {
       width: 1.8vw;
       height: 1.8vw;
@@ -61,10 +59,10 @@ export const PriceEstimateContainer = styled.div`
   }
 `
 
-export const PriceEstimateContainerb1 = styled.div`
+export const PriceEstimateContMain = styled.div`
   width: fit-content;
   height: fit-content;
-  padding: 4vw 3vw 2vw 4vw;
+  padding: 0 3vw 2vw 4vw;
   @media (max-width: 750px) {
     width: 100%;
     padding: 0;
@@ -87,6 +85,21 @@ export const PriceEstimateContainerb1 = styled.div`
   }
   #slide_label {
     margin-top: 3.45323741007194vw;
+    .round {
+      width: 1.8vw;
+      height: 1.8vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1DCA94;
+      color: white;
+      border-radius: 50%;
+      margin-right: 0.6vw;
+      font-size: 0.9vw;
+    }
+    label {
+      display: flex;
+    }
     @media (max-width: 750px) {
       text-align: center;
       line-height: 6.53061224489796vw;
