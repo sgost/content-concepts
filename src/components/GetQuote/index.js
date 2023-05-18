@@ -144,10 +144,11 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     };
     fetch('http://web1.fidisys.com/api/v1/razorpay/orders', requestOptions)
       .then(response => response.json())
-      .then(response => { 
-        if(response?.data) {
+      .then(response => {
+        if (response?.data) {
           payRazorpay(response?.data)
-        }})
+        }
+      })
       .catch((error) => console.log("error", error));
   }
 
@@ -245,8 +246,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
     console.log("fileData", fileData)
 
-    // let url = "https://script.google.com/macros/s/AKfycby21K0Dp5VcUVVcEIJVDAVmwqTz-okzQqqz0Dtj99pYR-E6eE433fLU_2wc7cXsmpYDBg/exec";
-    let url = 'https://script.google.com/macros/s/AKfycbzZuTthKogi0tu5kkOT_znKt_ynkO6QO_cnDKs8KwP2WtmbtSD9iC1Lax2ZjXYiGArQ/exec'
+    let url = "https://script.google.com/macros/s/AKfycby21K0Dp5VcUVVcEIJVDAVmwqTz-okzQqqz0Dtj99pYR-E6eE433fLU_2wc7cXsmpYDBg/exec";
 
     await fetch(url, {
       method: 'POST',
@@ -265,7 +265,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
   // Handle cancel function
   const handelCancel = () => {
-    navigate("/");
+    navigate("/services/academic_editing");
     setSuccess(false);
     setLoading(false);
     cancelQuoteFormFun();
@@ -501,7 +501,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         width={1000}
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}
-        onCancel={handelCancel}
+        onCancel={() => setSuccess(false)}
         footer={null}
       >
         {customLoader ?
@@ -538,9 +538,6 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
                     invoiceCreate={invoiceCreateFun}
                   />
                 }
-                <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={createOrder}>
-                  Razorpay
-                </Button>
               </div>
             }
           </Quotepop>
@@ -552,7 +549,6 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
               <div className="success_text">
                 <p className="popup_title">Your payment is successful!</p>
                 <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
-                <button className="conf_btn" onClick={() => handelCancel()}>Close</button>
               </div>
             </div>
           </SuccessPopup>
