@@ -533,13 +533,6 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
                     invoiceCreate={invoiceCreateFun}
                   />
                 }
-
-                <PaypalGateWayBtn product={{
-                  description: `Word Count:  ${wordcount}`,
-                  price: currPrice
-                }}
-                  invoiceCreate={invoiceCreateFun}
-                />
               </div>
             }
           </Quotepop>
