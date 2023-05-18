@@ -103,6 +103,9 @@ export const PriceEstimateContMain = styled.div`
     @media (max-width: 750px) {
       text-align: center;
       line-height: 6.53061224489796vw;
+      .round {
+        display: none;
+       }
     }
   }
   #slide_label:nth-child(2) {
@@ -153,6 +156,7 @@ export const PriceEstimateContMain = styled.div`
     width: fit-content;
     margin: -0.8vw 0 0 0;
     height: 5vw;
+    position: relative;
     @media (max-width: 750px) {
       width: 100%;
       justify-content: center;
@@ -167,10 +171,15 @@ export const PriceEstimateContMain = styled.div`
     font-size: 0.9vw;
     font-weight: 500;
     line-height: 1.72661870503597vw;
+    position: absolute;
+    line-height: 1.72662vw;
+    top: 3vw;
+    width: 21vw;
     @media (max-width: 750px) {
       font-size: 2.44897959183673vw;
       line-height: 3.6734693877551vw;
-      margin: 3.26530612244898vw 0 0 0;
+      margin: 10vw 0 0 0;
+      width: 100%;
     }
   }
   #peinput {
