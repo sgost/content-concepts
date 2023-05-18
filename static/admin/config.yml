@@ -329,7 +329,7 @@ collections:
           - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
           - { name: quoteLink, label: Link, default: www.sample.com, required: false }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
-
+      - { name: editingToggle, label: Editing Services Toggle, default: show, required: false }
       - label: Service Process
         name: serviceProcess
         widget: object

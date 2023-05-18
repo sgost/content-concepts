@@ -887,7 +887,7 @@ export const NativeEditorPreview = styled.div`
         font-family: "Poppins";
         font-style: normal;
         font-weight: 400;
-        font-size: 0.8vw;
+        font-size: 1vw;
         line-height: 1.7vw;
         color: #666666;
       }

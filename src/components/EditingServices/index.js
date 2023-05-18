@@ -7,6 +7,7 @@ import MenuSection from "./menu"
 import { FAQPreviewSection } from "../FAQ"
 
 const EditingServices = ({ data }) => {
+  const pricingContent = data.pageData.childMarkdownRemark.frontmatter;
   return (
     <Fragment>
       {data.markdownRemark.frontmatter.seo && (
@@ -19,6 +20,7 @@ const EditingServices = ({ data }) => {
       <MenuSection
         content={data.markdownRemark.frontmatter}
         description={data.markdownRemark.html}
+        pricingContent={pricingContent}
       />
       {/* <Customers /> */}
       {/* <Contact /> */}
@@ -37,6 +39,28 @@ export default EditingServices
 
 export const query = graphql`
   query($slug: String!) {
+    pageData: file(relativePath: {eq: "pricing/index.md"}) {
+      childMarkdownRemark {
+        frontmatter {
+          heading
+          subHeading
+          types {
+            id
+            title
+            pricing {
+              id
+              title
+              editingServices
+              price {
+                inr
+                usd
+              }
+              themeColor
+            }
+          }
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       fields {
         slug
@@ -58,6 +82,7 @@ export const query = graphql`
           editing
         }
         description
+        editingToggle
         message
         connectToolsTitle
         connectToolsDec

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { graphql, useStaticQuery, navigate } from "gatsby"
 import { Form, message, Input, Radio, Row, Col, Upload, Button, Modal, Spin } from 'antd';
-import { SmileOutlined, UploadOutlined, LoadingOutlined } from '@ant-design/icons';
+import { SmileOutlined, UploadOutlined, LoadingOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { QuoteFormSection, Quotepop, SuccessPopup, LoaderPopup } from './styles';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
@@ -30,7 +30,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   // Newly added
   const [showCustomPopup, setShowCustomPopup] = useState(false);
   const [customLoader, setCustomLoader] = useState(false);
-  const [fileObj, setFileObj] = useState({"file": "", "name": ""})
+  const [fileObj, setFileObj] = useState({ "file": "", "name": "" })
 
   // convert amount in text formate
   const doConvert = (value) => {
@@ -94,7 +94,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        setFileObj({...fileObj,"file": e.target.result, "name": file?.name})
+        setFileObj({ ...fileObj, "file": e.target.result, "name": file?.name })
         file.base64 = e.target.result;
         resolve(e.target.result);
       };
@@ -135,14 +135,14 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       console.log("Error")
     } else {
       const options = {
-        key: "rzp_live_MTWtqGzfzQN1mn",
+        key: "rzp_live_w2FOP1WkUkuzTU",
         currency: "INR",
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
         description: "Providing Perfect Editing...",
         handler: async function (response) {
           if (response.razorpay_payment_id) {
-            invoiceCreateFun();
+            createOrder();
           } else {
             setRazorSuccess(false)
             message.error({
@@ -164,6 +164,27 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       const paymentObject = new window.Razorpay(options)
       paymentObject.open()
     }
+  }
+
+  // Create Order API
+  const createOrder = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        "amount": currPrice,
+        "currency": "INR",
+        "receipt": "Receipt no. 1",
+        "notes": {
+          "notes_key_1": "Need quick editing",
+          "notes_key_2": "Fast editing in affordable prices."
+        }
+      })
+    };
+    fetch('http://web1.fidisys.com/api/v1/razorpay/orders', requestOptions)
+      .then(response => response.json())
+      .then(_data => { invoiceCreateFun() })
+      .catch((error) => console.log("error", error));
   }
 
   // Function on finish
@@ -192,7 +213,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
     } else {
       fileData.append("languageCategory", values.languageCategory);
     }
-console.log("fileObj", fileObj)
+    console.log("fileObj", fileObj)
     if (values.categoryFile !== undefined) {
       fileData.append("file", fileObj?.file)
       fileData.append("filename", fileObj?.name);
@@ -218,7 +239,7 @@ console.log("fileObj", fileObj)
       fileData.append("requirement", values.requirement);
     }
 
-    console.log("fileData",fileData)
+    console.log("fileData", fileData)
 
     let url = "https://script.google.com/macros/s/AKfycby21K0Dp5VcUVVcEIJVDAVmwqTz-okzQqqz0Dtj99pYR-E6eE433fLU_2wc7cXsmpYDBg/exec";
 
@@ -239,7 +260,7 @@ console.log("fileObj", fileObj)
 
   // Handle cancel function
   const handelCancel = () => {
-    navigate("/pricing/");
+    navigate("/");
     setSuccess(false);
     setLoading(false);
     cancelQuoteFormFun();
@@ -512,22 +533,29 @@ console.log("fileObj", fileObj)
                     invoiceCreate={invoiceCreateFun}
                   />
                 }
+
+                <PaypalGateWayBtn product={{
+                  description: `Word Count:  ${wordcount}`,
+                  price: currPrice
+                }}
+                  invoiceCreate={invoiceCreateFun}
+                />
               </div>
             }
           </Quotepop>
         }
         {showCustomPopup &&
-        <SuccessPopup>
-          <div className="success_popup">
-            <SmileOutlined className="SmileOutlined" />
-            <div className="success_text">
-              <p className="popup_title">Your payment is successful!</p>
-              <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
-              <button className="conf_btn" onClick={() => handelCancel()}>Conform</button>
-            </div>
+          <SuccessPopup>
+        <div className="success_popup">
+          <CheckCircleOutlined className="SmileOutlined"/>
+          <div className="success_text">
+            <p className="popup_title">Your payment is successful!</p>
+            <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
+            <button className="conf_btn" onClick={() => handelCancel()}>Close</button>
           </div>
-        </SuccessPopup>
-      }
+        </div>
+      </SuccessPopup>
+        }
       </Modal>
     </>
   )
