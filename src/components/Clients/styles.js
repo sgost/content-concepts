@@ -8,7 +8,7 @@ export const ClientsSection = styled.div`
 `;
 
 export const SectionContent = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 25px 20px;
   h2 {
@@ -17,6 +17,9 @@ export const SectionContent = styled.div`
   }
   p {
     text-align: center;
+    font-size: 16px;
+    line-height: 26px;
+    color: #333333;
   }
 `;
 

@@ -35,6 +35,8 @@ export const PriceEstimateContainer = styled.div`
     color: #57697D;
     text-align: center;
     margin-top: 1.5vw;
+    border-bottom: 1px solid #00000036;
+    padding: 0 0 1vw 0;
     .round {
       width: 1.8vw;
       height: 1.8vw;
