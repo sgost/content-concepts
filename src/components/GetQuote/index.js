@@ -125,10 +125,35 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
   }
 
   const [razorSuccess, setRazorSuccess] = useState(false)
+
   const currPrice = Math.round(MainPrize)
+  // Create Order API
+  const createOrder = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: parseInt(currPrice * 100),
+        "currency": "INR",
+        "receipt": "Receipt no. 1",
+        "notes": {
+          "notes_key_1": "Need quick editing",
+          "notes_key_2": "Fast editing in affordable prices."
+        }
+      })
+    };
+    fetch('http://web1.fidisys.com/api/v1/razorpay/orders', requestOptions)
+      .then(response => response.json())
+      .then(response => {
+        if (response?.data) {
+          payRazorpay(response?.data)
+        }
+      })
+      .catch((error) => console.log("error", error));
+  }
 
   // function for razorpayment gateway
-  const payRazorpay = async () => {
+  const payRazorpay = async (orderData) => {
     setCustomLoader(true);
     const razorpayRes = await loadscript("https://checkout.razorpay.com/v1/checkout.js")
     if (!razorpayRes) {
@@ -140,9 +165,10 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
         description: "Providing Perfect Editing...",
+        order_id: orderData?.id,
         handler: async function (response) {
           if (response.razorpay_payment_id) {
-            createOrder();
+            invoiceCreateFun()
           } else {
             setRazorSuccess(false)
             message.error({
@@ -164,27 +190,6 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       const paymentObject = new window.Razorpay(options)
       paymentObject.open()
     }
-  }
-
-  // Create Order API
-  const createOrder = () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "amount": currPrice,
-        "currency": "INR",
-        "receipt": "Receipt no. 1",
-        "notes": {
-          "notes_key_1": "Need quick editing",
-          "notes_key_2": "Fast editing in affordable prices."
-        }
-      })
-    };
-    fetch('http://web1.fidisys.com/api/v1/razorpay/orders', requestOptions)
-      .then(response => response.json())
-      .then(_data => { invoiceCreateFun() })
-      .catch((error) => console.log("error", error));
   }
 
   // Function on finish
@@ -260,7 +265,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
   // Handle cancel function
   const handelCancel = () => {
-    navigate("/");
+    navigate("/services/academic_editing");
     setSuccess(false);
     setLoading(false);
     cancelQuoteFormFun();
@@ -496,7 +501,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         width={1000}
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}
-        onCancel={handelCancel}
+        onCancel={() => setSuccess(false)}
         footer={null}
       >
         {customLoader ?
@@ -522,7 +527,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
                   <p id="Quotepop_t3">Proceed to pay via {currency === 4 ? "Razorpay" : "PayPal"}</p>
                 }
                 {currency === 4 ?
-                  <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={payRazorpay}>
+                  <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={createOrder}>
                     Razorpay
                   </Button>
                   :
@@ -539,15 +544,14 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         }
         {showCustomPopup &&
           <SuccessPopup>
-        <div className="success_popup">
-          <CheckCircleOutlined className="SmileOutlined"/>
-          <div className="success_text">
-            <p className="popup_title">Your payment is successful!</p>
-            <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
-            <button className="conf_btn" onClick={() => handelCancel()}>Close</button>
-          </div>
-        </div>
-      </SuccessPopup>
+            <div className="success_popup">
+              <CheckCircleOutlined className="SmileOutlined" />
+              <div className="success_text">
+                <p className="popup_title">Your payment is successful!</p>
+                <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
+              </div>
+            </div>
+          </SuccessPopup>
         }
       </Modal>
     </>
