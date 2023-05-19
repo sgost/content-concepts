@@ -128,32 +128,32 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
 
   const currPrice = Math.round(MainPrize)
   // Create Order API
-  // const createOrder = () => {
-  //   const requestOptions = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       amount: parseInt(currPrice * 100),
-  //       "currency": "INR",
-  //       "receipt": "Receipt no. 1",
-  //       "notes": {
-  //         "notes_key_1": "Need quick editing",
-  //         "notes_key_2": "Fast editing in affordable prices."
-  //       }
-  //     })
-  //   };
-  //   fetch('http://web1.fidisys.com/api/v1/razorpay/orders', requestOptions)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       if (response?.data) {
-  //         payRazorpay(response?.data)
-  //       }
-  //     })
-  //     .catch((error) => console.log("error", error));
-  // }
+  const createOrder = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: parseInt(currPrice * 100),
+        "currency": "INR",
+        "receipt": "Receipt no. 1",
+        "notes": {
+          "notes_key_1": "Need quick editing",
+          "notes_key_2": "Fast editing in affordable prices."
+        }
+      })
+    };
+    fetch('https://screen-prod.fidisys.com/api/v1/razorpay/getorder', requestOptions)
+      .then(response => response.json())
+      .then(response => {
+        if (response?.data) {
+          payRazorpay(response?.data)
+        }
+      })
+      .catch((error) => console.log("error", error));
+  }
 
   // function for razorpayment gateway
-  const payRazorpay = async () => {
+  const payRazorpay = async (orderData) => {
     setCustomLoader(true);
     const razorpayRes = await loadscript("https://checkout.razorpay.com/v1/checkout.js")
     if (!razorpayRes) {
@@ -165,7 +165,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         amount: parseInt(currPrice * 100),
         name: "Content Concepts",
         description: "Providing Perfect Editing...",
-        // order_id: orderData?.id,
+        order_id: orderData?.id,
         handler: async function (response) {
           if (response.razorpay_payment_id) {
             invoiceCreateFun()
@@ -527,7 +527,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
                   <p id="Quotepop_t3">Proceed to pay via {currency === 4 ? "Razorpay" : "PayPal"}</p>
                 }
                 {currency === 4 ?
-                  <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={payRazorpay}>
+                  <Button type="primary" icon={<img src={razorpayLogo} style={{ width: `20px`, height: `20px`, marginRight: `10px` }} alt="razorpayLogo" />} onClick={createOrder}>
                     Razorpay
                   </Button>
                   :
