@@ -333,7 +333,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bodyData)
     };
-    fetch('http://web1.fidisys.com/api/v1/pdf/create', requestOptions)
+    fetch('https://screen-prod.fidisys.com/api/v1/pdf/create', requestOptions)
       .then(response => response.json())
       .then(_data => {
         form.resetFields();
