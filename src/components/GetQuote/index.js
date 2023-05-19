@@ -549,6 +549,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
               <div className="success_text">
                 <p className="popup_title">Your payment is successful!</p>
                 <p className="popup_description">You will receive the payment confirmation with the receipt in your email shortly.</p>
+                <button className="conf_btn" onClick={() => handelCancel()}>Close</button>
               </div>
             </div>
           </SuccessPopup>
