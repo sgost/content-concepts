@@ -142,7 +142,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
         }
       })
     };
-    fetch('https://screen-prod.fidisys.com/', requestOptions)
+    fetch('https://screen-prod.fidisys.com/api/v1/razorpay/orders', requestOptions)
       .then(response => response.json())
       .then(response => {
         if (response?.data) {
