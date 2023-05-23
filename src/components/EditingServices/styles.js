@@ -886,9 +886,9 @@ export const NativeEditorPreview = styled.div`
       .user_card_description {
         font-family: "Poppins";
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 1vw;
-        line-height: 1.7vw;
+        line-height: 1.5vw;
         color: #666666;
       }
       .card_desc_main {

@@ -122,7 +122,7 @@ export const ContactPreviewSection = ({
             </Select>
           </Form.Item>
           <Form.Item name='description'>
-            <Input.TextArea rows={4} placeholder="How can we help you?" />
+            <Input.TextArea rows={4} placeholder="Please describe your requirement in detail" />
           </Form.Item>
           <Form.Item className="submitButton">
             <Button type="primary" htmlType="submit" disabled={disabled}>
