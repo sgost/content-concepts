@@ -325,7 +325,7 @@ const GetQuote = ({ props, wordcount, currency, toggleState, dayNumber, year, da
       "heading": category || '',
       "wordcount": wordcount || '',
       "rate": priceRate || '',
-      "amount": currPrice || '',
+      "amount": currencyPrize || '',
       "total_in_words": doConvert(MainPrize)
     }
     const requestOptions = {
