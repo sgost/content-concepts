@@ -18,6 +18,8 @@ import less_arrow from "../../images/bread_crump_arrow.svg";
 
 const MenuContent = ({ content, description, preview }) => {
 
+  const getPath = typeof window !== 'undefined' && window.location.pathname
+
   return (
     <Fragment>
       <BreadCrumps>
@@ -79,7 +81,7 @@ const MenuContent = ({ content, description, preview }) => {
           </RefundSection>
 
           <ButtonContainer>
-            <Link to="/pricing/"><Button type="primary">{content?.btnTxt?.quote ? content?.btnTxt?.quote : 'Get Quote'}</Button></Link>
+            <Link to={ getPath.includes("content_writing") ? "/contact" : "/pricing/" }><Button type="primary">{content?.btnTxt?.quote ? content?.btnTxt?.quote : 'Get Quote'}</Button></Link>
             <Button onClick={() => window.location.href = "#editingSample"}>{content?.btnTxt?.sample ? content?.btnTxt?.sample : 'Check Sample'}</Button>
             <Button onClick={() => window.location.href = "#editingProcess"}>{content?.btnTxt?.editing ? content?.btnTxt?.editing : 'Editing Process'}</Button>
           </ButtonContainer>
