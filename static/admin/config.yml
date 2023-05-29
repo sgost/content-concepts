@@ -326,17 +326,10 @@ collections:
         name: flashBannerTop
         widget: object
         fields:
-<<<<<<< HEAD
           - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
           - { name: quoteLink, label: Link, default: www.sample.com, required: false }
           - { name: quoteToggle, label: Toggle, default: show, required: false }
       - { name: editingToggle, label: Editing Services Toggle, default: show, required: false }
-=======
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
-          - { name: quoteToggle, label: Toggle, default: show, required: false }
-
->>>>>>> 0bd23eb9412d02c4769b9bae3e73d0031da00494
       - label: Service Process
         name: serviceProcess
         widget: object
@@ -400,13 +393,8 @@ collections:
         name: flashBannerCenter
         widget: object
         fields:
-<<<<<<< HEAD
           - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
           - { name: quoteLink, label: Link, default: www.sample.com, required: false }
-=======
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
->>>>>>> 0bd23eb9412d02c4769b9bae3e73d0031da00494
           - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Levels
@@ -462,19 +450,13 @@ collections:
           name: connectToolsTitle,
           label: Connect Tools Section Title,
           default: Connect Tools Section Title,
-<<<<<<< HEAD
           required: false,
-=======
->>>>>>> 0bd23eb9412d02c4769b9bae3e73d0031da00494
         }
       - {
           name: connectToolsDec,
           label: Connect Tools Section Description,
           default: Connect Tools Section Description,
-<<<<<<< HEAD
           required: false,
-=======
->>>>>>> 0bd23eb9412d02c4769b9bae3e73d0031da00494
         }
       - {
           name: connectToolsToggle,
@@ -545,13 +527,8 @@ collections:
         name: flashBannerBottom
         widget: object
         fields:
-<<<<<<< HEAD
           - { name: quoteTitle, label: Title, default: Flash Banner Title, required: false }
           - { name: quoteLink, label: Link, default: www.sample.com, required: false }
-=======
-          - { name: quoteTitle, label: Title, default: Flash Banner Title }
-          - { name: quoteLink, label: Link, default: www.sample.com }
->>>>>>> 0bd23eb9412d02c4769b9bae3e73d0031da00494
           - { name: quoteToggle, label: Toggle, default: show, required: false }
 
       - label: Editing Sample
