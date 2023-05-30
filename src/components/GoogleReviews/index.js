@@ -8,7 +8,7 @@ const GoogleReviews = ({ color }) => {
             <div className="google_reviews" style={{ background: color ? color : "white" }}>
                 <h1 className="review_title"><img src={google_icon} alt="img" className="google_icons" />Google Reviews</h1>
                 <div className="review_card">
-                    <div className="elfsight-app-ba16b257-c2a1-492e-a143-2644db3fbd22"></div>
+                  <div class="elfsight-app-28927a49-effc-4049-bbee-1d324c8c9703"></div>
                 </div>
             </div>
         </GoogleReviewsSection>
