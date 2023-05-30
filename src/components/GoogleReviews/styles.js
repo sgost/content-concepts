@@ -22,14 +22,14 @@ export const GoogleReviewsSection = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-    .cuGyCz {
+    .djbQLo {
       max-width: 100%;
     }
-    .elfsight-app-ba16b257-c2a1-492e-a143-2644db3fbd22 {
-      .dPBwJJ {
+    .CarouselItem__CarouselItemContainer-sc-14kwh0g-0 {
         background: #ffffff !important;
         border: 2px solid rgba(21, 39, 73, 0.15) !important;
-      }
+        padding: 20px;
+        border-radius: 19px;
     }
   }
 }
