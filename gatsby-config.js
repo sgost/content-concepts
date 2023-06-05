@@ -20,7 +20,7 @@ module.exports = {
       "manuscript editing services",
       "cheap english editing services",
     ],
-    siteUrl: `https://contentconcepts.in/`,
+    siteUrl: `https://contentconcepts.com/`,
   },
   plugins: [
     {
@@ -96,7 +96,7 @@ module.exports = {
       options: {
         name: `contentconcepts-data`,
         remote: `https://github.com/fidisys/contentconcepts-data`,
-        branch: `contentconcepts.com`,
+        branch: `master`,
       },
     },
     `gatsby-remark-reading-time`,
